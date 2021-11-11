@@ -1,0 +1,182 @@
+*{
+    margin: 0px auto;
+    padding: 0px auto;
+}
+
+body{
+    width: 100%;
+    background-color: black;
+}
+
+.clearfix{
+    clear: both;
+    float: none;
+}
+
+header{
+    background-color: #ff9000;
+    width: 100%;
+    height: 110px;
+    margin: 0px auto;
+    font-family: 'Courgette', cursive;
+}
+
+#carrito{
+    background-color: white;
+    right: 70px;
+    top: 20px;
+    position: absolute;
+    min-height: 80px;
+}
+
+header > h1{
+    margin-left: 30px;
+    font-size: 50px;
+    padding-top: 20px;
+}
+
+nav > ul > li{
+    display: inline-block;
+    margin: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+nav > ul > li > a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-family: 'Courier New', Courier, monospace;
+    
+}
+
+nav > ul{
+   text-align: center;
+   background-color: #262626;
+}
+
+#carrusel{
+    width: 65%;
+    height: 350px;
+    background-color: wheat;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#contenidoPrincipal{
+    width: 90%;
+}
+
+#articulos{
+    float: left;
+    width: 67%;
+    background-color: #262626;
+    margin-bottom: 15px;
+    padding-left: 23px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+}
+
+article{
+    background-color:black;
+    margin: 8px;
+    width: 23%;
+    float: left;
+    min-height: 366px;
+}
+
+article > img{
+    width:100%;
+    height: 180px;
+}
+
+article > p{
+    width:100%;
+    height: 151px;
+    color: whitesmoke;
+}
+
+article > h2{
+ background-color: #ff8f00;
+ text-align: center;
+ color: whitesmoke;
+ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+ font-size: 18px;
+ min-height: 45px;
+ line-height: 30px;
+}
+
+aside{
+    width: 30%;
+    float: right;
+    border-radius: 5px;
+}
+
+img{
+    width: 100%;
+    height: 300px;
+}
+
+footer{
+    background-color: #262626;
+    min-height: 70px;
+    text-align: center;
+    font-size: 25px;
+    color: #b47c33;
+    line-height: 70px;
+}
+
+#titulosAside{
+    text-align: center;
+    color: #cccccc;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0px auto;
+    font-size: 20px;
+    padding: 15px;
+}
+
+aside > #quienSoy > p {
+    color: #afafaf;
+    font-size: 18px;
+    padding: 10px
+}
+
+ #quienSoy, #identificate{
+    background-color:#262626;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+input{
+    display: block;
+}
+
+label{
+    text-align: center;
+    font-size: 22px;
+}
+
+input[type = "text"]{
+    margin: 10px
+}
+
+input[type = "button"]{
+    margin: 20px;
+    margin-left: 10px;
+    font-size: 20px;
+    width: 20%;
+}
+
+label{
+    color: #a86813;
+    margin-left: 5px;
+}
+
+form{
+    display: block;
+    margin-left: 160px;
+}
+
+#identificate{
+    padding: 10px;
+}
