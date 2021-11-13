@@ -1,4 +1,4 @@
-class AutoAntiguo {
+class AutoClassic {
   constructor(nombre, marca, color, cantPuertas, precioEnDolares, veloMaxEnKm, combustible) {
     this.nombre = nombre;
     this.marca = marca;
@@ -10,22 +10,22 @@ class AutoAntiguo {
   }
 }
 let intentos = 0;
-let lsAutosAntiguos = [];
-const sel280 = new AutoAntiguo("sel280", "mercedes benz", "negro", 5, 3500, 200, "gasolina")
-const mustang = new AutoAntiguo("mustang", "ford", "negro", 5, 2200, 180, "nafta")
-const falcon = new AutoAntiguo("falcon", "ford", "negro", 5, 2800, 180, "nafta")
-const cj7 = new AutoAntiguo("cj7", "jeep", "negro", 2, 3000, 150, "nafta")
-const topolino = new AutoAntiguo("topolino", "fiat", "negro", 2, 1000, 80, "gasolina")
-lsAutosAntiguos.push(sel280,mustang,falcon,cj7,topolino);
+let lsAutosClassic = [];
+const sel280 = new AutoClassic("sel280", "mercedes benz", "negro", 5, 3500, 200, "gasolina")
+const mustang = new AutoClassic("mustang", "ford", "negro", 5, 2200, 180, "nafta")
+const falcon = new AutoClassic("falcon", "ford", "negro", 5, 2800, 180, "nafta")
+const cj7 = new AutoClassic("cj7", "jeep", "negro", 2, 3000, 150, "nafta")
+const topolino = new AutoClassic("topolino", "fiat", "negro", 2, 1000, 80, "gasolina")
+lsAutosClassic.push(sel280,mustang,falcon,cj7,topolino);
 
-const nombresDeTodosLosAutosAntiguos = () => {
+const nombresDeTodosLosAutosClassic = () => {
     //proposito: retornar una nueva lista con todos los nombres de los autos antiguos.
     //precondicion: debe haber una lista de autos inicializada.
-    return lsAutosAntiguos.map((auto) => auto.nombre);
+    return lsAutosClassic.map((auto) => auto.nombre);
 };
 
 let autoAComprar= prompt(`Ingrese el nombre del auto que quiere comprar: 
-    ${nombresDeTodosLosAutosAntiguos()}.`).toLowerCase();
+    ${nombresDeTodosLosAutosClassic()}.`).toLowerCase();
 
 const esUsuarioRegistrado = (nombreUsuario) =>{
     //proposito: retorna true si el usuario esta registrado.
@@ -40,7 +40,7 @@ const esUsuarioRegistrado = (nombreUsuario) =>{
  const autoExiste = () => {
     //proposito: afirmar con true si existe el auto buscado por condicion.
     //precondicion: debe haber una lista de autos inicializada.
-   return lsAutosAntiguos.some((auto) => auto.nombre == autoAComprar);
+   return lsAutosClassic.some((auto) => auto.nombre == autoAComprar);
  };
  
 const montoAPagarPorElAutoBuscado = () => {
@@ -48,7 +48,7 @@ const montoAPagarPorElAutoBuscado = () => {
     //precondicion: el usuario necesita la lista de autos que puede comprar.
     let montoAPagarPorElAuto;
     if(autoExiste()){
-        let autoEncontrado = lsAutosAntiguos.find((auto) => auto.nombre == autoAComprar);
+        let autoEncontrado = lsAutosClassic.find((auto) => auto.nombre == autoAComprar);
         montoAPagarPorElAuto = autoEncontrado.precioEnDolares;
         while (intentos < 3) {
             let nombreUsuario = prompt(`Ingrese un nombre, si es un usuario registrado le aplicaremos un 10% de descuento a su compra.
