@@ -32,6 +32,7 @@ const modelosDeTodosLosAutos = () => {
   return lsAutosClassic.map((auto) => auto.modelo);
 };
 
+
 let autoAComprar = prompt(`Ingrese el nombre del auto que quiere comprar: 
     ${modelosDeTodosLosAutos()}.`);
 
@@ -101,6 +102,7 @@ const agregarPropiedades = () => {
   let key = 0;
   for (const auto of lsAutosClassic) {
     let propiedades = document.getElementsByClassName("propiedades");
+    let precios = document.getElementsByClassName("precio")
     propiedades[key].innerHTML = `<ul>
                      <li> marca: ${auto.marca}. </li>
                      <li> nombre: ${auto.modelo}. </li>
@@ -111,6 +113,7 @@ const agregarPropiedades = () => {
                      <li> año: ${auto.año}. </li>
                      </ul>
                      `;
+    precios[key].innerHTML = `U$S ${auto.precioEnDolares}`
     key++;
   }
 };
