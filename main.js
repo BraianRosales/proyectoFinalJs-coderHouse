@@ -120,11 +120,11 @@ localStorage.setItem('apellidoUsuario',apellidoUsuario)
 localStorage.setItem('contraseñaUsuario',contraseñaUsuario)
   if(esUsuarioRegistrado()){
     alertIndentificate.innerHTML = `Usuario registrado!`
-    alertIndentificate.style.color = "rgb(173, 233, 186)"
+    alertIndentificate.style.color = "green"
   }
   else{
     alertIndentificate.innerHTML = `No es usuario registrado.`
-    alertIndentificate.style.color = "#FF7267"
+    alertIndentificate.style.color = "red"
   }
 }
 
