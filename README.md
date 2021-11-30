@@ -1,2 +1,2 @@
 # proyectoFinalJs-coderHouse
-# Este proyecto es una pagina de ventas de autos clasicos de lujos.
+Este proyecto es una pagina de ventas de autos clasicos de lujos.
