@@ -34,7 +34,7 @@ const InputContraseña = document.getElementById('contraseña')
 const BtnEntrar = document.getElementById('btn-entrar')
 let alertIndentificate = document.getElementById('identificate-alerta')
 BtnEntrar.addEventListener('click',handleEntrar)
-
+let seIdentifico = "no";
 const modelosDeTodosLosAutos = () => {
   return lsAutosClassic.map((auto) => auto.modelo);
 };
@@ -70,7 +70,7 @@ function precioExtraido(precio){
 
  const siEsUsuarioRegistradoSeAplicaElDescuento = () => {
    let autoObjeto = JSON.parse(localStorage.getItem('autoClickeado'))
-   if(esUsuarioRegistrado()){
+   if(esUsuarioRegistrado() && sessionStorage.getItem('seIdentifico') == "si"){
     aplicamosSuDescuento(autoObjeto)
    }
    else{
@@ -83,7 +83,7 @@ function precioExtraido(precio){
   let porcentaje = precioAuto * 0.1
   precioAuto = precioAuto - porcentaje
   alerta.style.backgroundColor = "rgb(173, 233, 186)"
-  alerta.innerHTML = `<p>Es usuario registrado! aplicamos su descuento. Su monto a pagar es de U$S ${precioAuto}.</p>`
+  alerta.innerHTML = `<p>Usuario ingresado, aplicamos su descuento! su monto a pagar es de U$S ${precioAuto}.</p>`
   alerta.style.textAlign = "center"
   alerta.style.fontSize = "20px"
   alerta.style.lineHeight = "35px"
@@ -92,32 +92,42 @@ function precioExtraido(precio){
 const pagaPrecioReal  = (autoObjeto) =>{
   let precioAuto = autoObjeto.precio
   alerta.style.backgroundColor = "rgb(250, 251, 168)"
-  alerta.innerHTML = `<p> No es usuario registrado.Su monto a pagar es de U$S ${precioAuto}.</p>`
+  alerta.innerHTML = `<p> Usuario no ingresado.Su monto a pagar es de U$S ${precioAuto}.</p>`
   alerta.style.textAlign = "center"
   alerta.style.fontSize = "20px"
   alerta.style.lineHeight = "35px"
 }
 
-const encuentraElAutoPorNombre = () => {
-  //con el metodo find encuentro el auto por condicion, en este caso es por el nombre.
+const encuentraElAutoPorNombre = () =>{
   return lsAutosClassic.find((auto) => auto.precioEnString == precioGuardado);
 }; 
 
+const elUsuarioYaFueRegistrado = () =>{
+  let lsUsuariosRegistrados = JSON.parse(localStorage.getItem('lsUsuariosRegistrados'))
+  let nombreUsuarioIdentificado =  localStorage.getItem('nombreIdentificado');
+  let apellidoUsuarioIdentificado = localStorage.getItem('apellidoIdentificado');
+  let contraseñaUsuarioIdentificado = localStorage.getItem('contraseñaIdentificado');
+  return lsUsuariosRegistrados.some(usuario => (usuario.nombre == nombreUsuarioIdentificado && usuario.apellido == apellidoUsuarioIdentificado) && (usuario.contraseña ==  contraseñaUsuarioIdentificado))
+}
+
 const esUsuarioRegistrado = () => {
   let esUsuarioRegistrado = false;
-  if( (localStorage.getItem('nombreUsuario') == 'braian' && localStorage.getItem('apellidoUsuario') == 'rosales') && localStorage.getItem('contraseñaUsuario') == 'admin123'){
+  if(elUsuarioYaFueRegistrado())
+  {
     esUsuarioRegistrado = true;
   }
   return esUsuarioRegistrado
 }
 
 function handleEntrar(){
+seIdentifico = "si";
+sessionStorage.setItem('seIdentifico',seIdentifico)
 let nombreUsuario = (InputNombre.value).toLowerCase()
 let apellidoUsuario = (InputApellido.value).toLowerCase()
 let contraseñaUsuario = (InputContraseña.value).toLowerCase()
-localStorage.setItem('nombreUsuario',nombreUsuario)
-localStorage.setItem('apellidoUsuario',apellidoUsuario)
-localStorage.setItem('contraseñaUsuario',contraseñaUsuario)
+localStorage.setItem('nombreIdentificado',nombreUsuario)
+localStorage.setItem('apellidoIdentificado',apellidoUsuario)
+localStorage.setItem('contraseñaIdentificado',contraseñaUsuario)
   if(esUsuarioRegistrado()){
     alertIndentificate.innerHTML = `Usuario registrado!`
     alertIndentificate.style.color = "green"
