@@ -27,32 +27,32 @@ $(()=>{
   const fordMustang289Convertible = new AutoClassic("Ford","mustaing 289","Red",2,85.995,"Nafta",1968,"U$S 120000",120000);
   lsAutosClassic.push(mgMidget1500,mercedesBenz280Sl,acCobra,porsche911ScCabrioEU,fordA,subaru360,chevroletCamaroZ28,mercedesBenz560SL,jaguarEType,porsche928S,chevroletCorvetteTTop,fordMustang289Convertible);
   let precioGuardado;
-  let alerta = document.getElementById("alert");
-  const InputNombre = document.getElementById('nombre')
-  const InputApellido = document.getElementById('apellido')
-  const InputContraseña = document.getElementById('contraseña')
-  const BtnEntrar = document.getElementById('btn-entrar')
-  let alertIndentificate = document.getElementById('identificate-alerta')
-  BtnEntrar.addEventListener('click',handleEntrar)
+  let alerta = $('#alert');
+  const InputNombre = $('#nombre')
+  const InputApellido = $('#apellido')
+  const InputContraseña = $('#contraseña')
+  const BtnEntrar = $('#btn-entrar')
+  let alertIndentificate = $('#identificate-alerta')
+  BtnEntrar.on('click',handleEntrar);
   let seIdentifico = "no";
   
   const agregarPropiedades = () => {
     let key = 0;
     for (const auto of lsAutosClassic) {
-      let propiedades = document.getElementsByClassName("propiedades");
-      let precios = document.getElementsByClassName("precio")
+      let propiedades = $('.propiedades');
+      let precios = $('.precio');
+      console.log(propiedades)
       propiedades[key].innerHTML = `<ul>
-                       <li> marca: ${auto.marca}. </li>
-                       <li> nombre: ${auto.modelo}. </li>
-                       <li> color: ${auto.color}. </li>
-                       <li> cantidad de puertas: ${auto.cantPuertas}. </li>
-                       <li> kilometraje: ${auto.kilometraje} km. </li>
-                       <li> combustible: ${auto.combustible}. </li>
-                       <li> año: ${auto.año}. </li>
-                       </ul>
-                       `;
-      precios[key].innerHTML = `${auto.precioEnString}`
-      key++;
+      <li> marca: ${auto.marca}. </li>
+      <li> nombre: ${auto.modelo}. </li>
+      <li> color: ${auto.color}. </li>
+      <li> cantidad de puertas: ${auto.cantPuertas}. </li>
+      <li> kilometraje: ${auto.kilometraje} km. </li>
+      <li> combustible: ${auto.combustible}. </li>
+      <li> año: ${auto.año}. </li>
+      </ul>`;
+      precios[key].innerHTML = `${auto.precioEnString}`;
+      key++
     }
   };
   
@@ -79,20 +79,20 @@ $(()=>{
     let precioAuto = autoObjeto.precio
     let porcentaje = precioAuto * 0.1
     precioAuto = precioAuto - porcentaje
-    alerta.style.backgroundColor = "rgb(173, 233, 186)"
-    alerta.innerHTML = `<p>Usuario ingresado, aplicamos su descuento! su monto a pagar es de U$S ${precioAuto}.</p>`
-    alerta.style.textAlign = "center"
-    alerta.style.fontSize = "20px"
-    alerta.style.lineHeight = "35px"
+    alerta.css("background-color","rgb(173, 233, 186)");
+    alerta.html(`<p>Usuario ingresado, aplicamos su descuento! su monto a pagar es de U$S ${precioAuto}.</p>`);
+    alerta.css("textAlign","center");
+    alerta.css("fontSize","20px");
+    alerta.css("lineHeight","35px")
   }
   
   const pagaPrecioReal  = (autoObjeto) =>{
     let precioAuto = autoObjeto.precio
-    alerta.style.backgroundColor = "rgb(250, 251, 168)"
-    alerta.innerHTML = `<p> Usuario no ingresado.Su monto a pagar es de U$S ${precioAuto}.</p>`
-    alerta.style.textAlign = "center"
-    alerta.style.fontSize = "20px"
-    alerta.style.lineHeight = "35px"
+    alerta.css("background-color","rgb(250, 251, 168)");
+    alerta.html(`<p> Usuario no ingresado.Su monto a pagar es de U$S ${precioAuto}.</p>`);
+    alerta.css("textAlign","center");
+    alerta.css("fontSize","20px");
+    alerta.css("lineHeight","35px")
   }
   
   const encuentraElAutoPorNombre = () =>{
@@ -119,19 +119,19 @@ $(()=>{
   function handleEntrar(){
   seIdentifico = "si";
   sessionStorage.setItem('seIdentifico',seIdentifico)
-  let nombreUsuario = (InputNombre.value).toLowerCase()
-  let apellidoUsuario = (InputApellido.value).toLowerCase()
-  let contraseñaUsuario = (InputContraseña.value).toLowerCase()
+  let nombreUsuario = (InputNombre[0].value).toLowerCase();
+  let apellidoUsuario = (InputApellido[0].value).toLowerCase()
+  let contraseñaUsuario = (InputContraseña[0].value).toLowerCase()
   localStorage.setItem('nombreIdentificado',nombreUsuario)
   localStorage.setItem('apellidoIdentificado',apellidoUsuario)
   localStorage.setItem('contraseñaIdentificado',contraseñaUsuario)
     if(esUsuarioRegistrado()){
-      alertIndentificate.innerHTML = `Usuario registrado!`
-      alertIndentificate.style.color = "green"
+      alertIndentificate.html(`Usuario registrado!`);
+      alertIndentificate.css("color","green")
     }
     else{
-      alertIndentificate.innerHTML = `No es usuario registrado.`
-      alertIndentificate.style.color = "red"
+      alertIndentificate.html(`No es usuario registrado.`); 
+      alertIndentificate.css("color","red")
     }
   }
 })
