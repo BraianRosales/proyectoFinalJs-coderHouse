@@ -12,6 +12,7 @@ $(()=>{
       this.precio = precio
     }
   }
+  
   let lsAutosClassic = [];
   const mgMidget1500 = new AutoClassic("MG","midget 1500","Brooklands Green",2,74.448,"Nafta",1978, "U$S 55000",55000);
   const mercedesBenz280Sl = new AutoClassic("Mercedes benz","280 Sl","Sun Yellow",2,90.358,"Nafta",1978,"U$S 80000",80000);
@@ -39,26 +40,26 @@ $(()=>{
   const agregarPropiedades = () => {
     let key = 0;
     for (const auto of lsAutosClassic) {
-      let propiedades = $('.propiedades');
-      let precios = $('.precio');
-      console.log(propiedades)
-      propiedades[key].innerHTML = `<ul>
-      <li> marca: ${auto.marca}. </li>
-      <li> nombre: ${auto.modelo}. </li>
-      <li> color: ${auto.color}. </li>
-      <li> cantidad de puertas: ${auto.cantPuertas}. </li>
-      <li> kilometraje: ${auto.kilometraje} km. </li>
-      <li> combustible: ${auto.combustible}. </li>
-      <li> año: ${auto.año}. </li>
-      </ul>`;
-      precios[key].innerHTML = `${auto.precioEnString}`;
-      key++
+      let articulos = $('article');
+      (articulos[key]).innerHTML += `
+      <ul class="ul">
+          <li> marca: ${auto.marca}. </li>
+          <li> nombre: ${auto.modelo}. </li>
+          <li> color: ${auto.color}. </li>
+          <li> cantidad de puertas: ${auto.cantPuertas}. </li>
+          <li> kilometraje: ${auto.kilometraje} km. </li>
+          <li> combustible: ${auto.combustible}. </li>
+          <li> año: ${auto.año}. </li>
+      </ul>
+  <div class="precio">${auto.precioEnString}</div>`
+  key++
     }
   };
-  
+
   agregarPropiedades();
   
   $('.precio').on('click',(e)=>{
+    console.log(e)
     localStorage.setItem('precioClickeado', e.target.textContent)
     precioGuardado = localStorage.getItem('precioClickeado')
     localStorage.setItem('autoClickeado', JSON.stringify(encuentraElAutoPorNombre()))
@@ -117,6 +118,7 @@ $(()=>{
   }
   
   function handleEntrar(){
+  console.log()
   seIdentifico = "si";
   sessionStorage.setItem('seIdentifico',seIdentifico)
   let nombreUsuario = (InputNombre[0].value).toLowerCase();

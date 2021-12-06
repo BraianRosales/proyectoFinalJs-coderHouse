@@ -13,6 +13,7 @@ body {
   float: none;
 }
 
+/*-------------------CSS HEADER-----------------*/
 header {
   background-color: black;
   width: 100%;
@@ -45,6 +46,8 @@ header > h1 {
   font-size: 40px;
 }
 
+/*-------------------CSS NAV--------------------*/
+
 nav > ul {
   text-align: center;
   background-color: #daf0fd;
@@ -53,11 +56,12 @@ nav > ul {
  nav > ul > li {
   display: inline-block;
   margin: 10px;
-  font-size: 25px;
+  font-size: 22px;
   cursor: pointer;
   font:bold;
-  font-size: 20px;
   font-family: 'Shippori Antique', sans-serif;
+  margin-left: 30px;
+  margin-top: 13px;
   transition: all 200ms;
 }
 
@@ -81,11 +85,12 @@ nav > ul > li > a:hover{
   text-shadow: 1px 2px 5px black;
 }
 
+/*----------------------CSS CARRUSEL-------------------*/
 #carrusel {
   width: 65%;
   height: 350px;
   border: 1px solid rgb(209, 208, 208);
-  margin-top: 15px;
+  margin-top: 60px;
   margin-bottom: 15px;
 }
 
@@ -93,6 +98,7 @@ nav > ul > li > a:hover{
   height: 35px;
   background-color: #f0f5fa;
   width: 90%;
+  margin-top: 40px;
   margin-bottom: 15px;
   border-radius: 5px;
 }
@@ -110,6 +116,8 @@ nav > ul > li > a:hover{
   padding-bottom: 20px;
   border-radius: 5px;
 }
+
+/*----------------------CSS ARTICULOS-------------------*/
 
 article {
   background-color: white;
@@ -133,14 +141,22 @@ article > img {
   height: 180px;
 }
 
-article > p {
+.ul {
+  margin-left: -27px;
+  line-height: 15px;
+  list-style: none;
+  margin-bottom: 12px;
+}
+
+
+.ul > li{
   width: 100%;
-  min-height: 151px;
   color: black;
   font-size: 16px;
   font-family: Arial, sans-serif;
-  padding-top: 3px;
+  padding-top: 5px;
 }
+
 
 .precio {
   background-color: lemonchiffon;
@@ -156,17 +172,6 @@ article > p {
   box-shadow:1px 1px 8px 1px rgb(255, 241, 161);
 }
 
-article > p > ul {
-  margin-left: -27px;
-  line-height: 21px;
-  list-style: none;
-}
-
-nav > ul > li {
-  margin-left: 30px;
-  margin-top: 13px;
-}
-
 article > h2 {
   background-color: #ff8f00;
   text-align: center;
@@ -176,6 +181,8 @@ article > h2 {
   min-height: 45px;
   line-height: 45px;
 }
+
+/*-------------------------CSS ASIDE----------------------------*/
 
 aside {
   width: 30%;
@@ -269,6 +276,18 @@ form {
   padding: 10px;
 }
 
+#identificate-alerta {
+  width: 70%;
+  min-height: 30px;
+  margin-top: 7px;
+  color: rgb(173, 233, 186);
+  text-align: center;
+  font-size: 20px;
+}
+
+
+/*--------------------------CSS FOOTER-----------------------------------*/
+
 footer {
   background-color: black;
   min-height: 90px;
@@ -280,15 +299,6 @@ footer {
   margin-top: 30px;
 }
 
-#identificate-alerta {
-  width: 70%;
-  /* border: 1px solid whitesmoke; */
-  min-height: 30px;
-  margin-top: 7px;
-  color: rgb(173, 233, 186);
-  text-align: center;
-  font-size: 20px;
-}
 
 /* ------------Aca comienza el responsive con mediaquery -------------- */
 
@@ -300,9 +310,8 @@ footer {
 
     #articulos article{
       width: 30%;
-
     }
-    #articulos article > p{
+    #articulos article ul li{
         font-size: 13px;
       }
     aside{
