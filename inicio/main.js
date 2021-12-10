@@ -41,6 +41,13 @@ $(()=>{
   let precioAuto;
   let lsUsuariosRegistrados;
   
+  nroCarrito = localStorage.getItem('numeroCarrito')
+  $('#carrito')[0].innerHTML = `<span>${nroCarrito}</span>`;
+
+  if(nroCarrito == null){
+    $('#carrito')[0].innerHTML = `<span>${0}</span>`;
+  }
+  
   const agregarPropiedades = () => {
     for (const auto of lsAutosClassic) {
       let articulos = $('#articulos');
@@ -72,10 +79,8 @@ $(()=>{
     localStorage.setItem('autoElegidoPorElUsuario',JSON.stringify(autoElegidoParaLaCompra(idPrecio)))
     console.log(localStorage.getItem('autoElegidoPorElUsuario'))
     localStorage.setItem('precioTotal',precioAuto)
-    $('#carrito')[0].innerHTML = `<span>1</span>`;
-    let span = $('span');
-    span.css('font-size','22px');
-    span.css("color","yellow");
+    localStorage.setItem('numeroCarrito',"1")  
+    $('#carrito')[0].innerHTML = `<span>${localStorage.getItem('numeroCarrito')}</span>`;
 })
 
   const siEsUsuarioRegistradoSeAplicaElDescuento = () => {
@@ -164,3 +169,6 @@ $(()=>{
     return lsAutosClassic.find(auto => auto.id == idPrecio)
   };
 })
+
+/*siguiente mejoras: estilos a las alertas, cuando sea una compra exitosa el numero del carrito se ponga en cero,
+ mostrar la lista de compras en la pagina de Compras agregando las compras exitosas y dejando la pagina del carrito vacia.*/

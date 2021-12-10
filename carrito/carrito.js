@@ -25,5 +25,6 @@ $(()=>{
         console.log($('#alert-comprar'))
         $("#alert-comprar").html(`Compra exitosa!`)
     })
-    localStorage.setItem('comprasExitosas',JSON.stringify(objAuto) )
+    lsComprasExitosas.push(objAuto)
+    localStorage.setItem('comprasExitosas',JSON.stringify(lsComprasExitosas) )
 })
