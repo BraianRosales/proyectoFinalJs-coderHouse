@@ -27,5 +27,7 @@ $(()=>{
         objAuto.precio = precioAuto;
         lsComprasExitosas.push(objAuto)
         console.log(lsComprasExitosas)
+        localStorage.setItem('lsComprasExitosas',JSON.stringify(lsComprasExitosas))
+        localStorage.setItem('numeroCarrito',0)
     })
 })
