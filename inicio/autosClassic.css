@@ -122,6 +122,8 @@ nav > ul > li > a:hover{
   width: 90%;
 }
 
+/*----------------------CSS ARTICULOS-------------------*/
+
 #articulos {
   float: left;
   width: 67%;
@@ -131,8 +133,6 @@ nav > ul > li > a:hover{
   padding-bottom: 20px;
   border-radius: 5px;
 }
-
-/*----------------------CSS ARTICULOS-------------------*/
 
 article {
   background-color: white;

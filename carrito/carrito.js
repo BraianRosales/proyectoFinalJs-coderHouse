@@ -24,7 +24,8 @@ $(()=>{
     $('#btn-comprar').on('click',()=>{
         console.log($('#alert-comprar'))
         $("#alert-comprar").html(`Compra exitosa!`)
+        objAuto.precio = precioAuto;
+        lsComprasExitosas.push(objAuto)
+        console.log(lsComprasExitosas)
     })
-    lsComprasExitosas.push(objAuto)
-    localStorage.setItem('comprasExitosas',JSON.stringify(lsComprasExitosas) )
 })
