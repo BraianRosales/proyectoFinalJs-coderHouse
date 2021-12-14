@@ -77,19 +77,21 @@ $(()=>{
     localStorage.setItem('autoClickeado', JSON.stringify(encuentraElAutoPorPrecio()))
     siEsUsuarioRegistradoSeAplicaElDescuento()
     localStorage.setItem('autoElegidoPorElUsuario',JSON.stringify(autoElegidoParaLaCompra(idPrecio)))
-    console.log(localStorage.getItem('autoElegidoPorElUsuario'))
     localStorage.setItem('precioTotal',precioAuto)
     localStorage.setItem('numeroCarrito',"1")  
     $('#carrito')[0].innerHTML = `<span>${localStorage.getItem('numeroCarrito')}</span>`;
+    alerta.fadeOut(5500)
 })
 
   const siEsUsuarioRegistradoSeAplicaElDescuento = () => {
      let autoObjeto = JSON.parse(localStorage.getItem('autoClickeado'))
      if(esUsuarioRegistrado() && sessionStorage.getItem('seIdentifico') == "si"){
       aplicamosSuDescuento(autoObjeto)
+      alerta.fadeIn(0)
      }
      else{
       pagaPrecioReal(autoObjeto)
+      alerta.fadeIn(0)
      }
    }
    
@@ -117,14 +119,13 @@ $(()=>{
     return lsAutosClassic.find((auto) => auto.precioEnString == precioGuardado);
   }; 
   
-
+  
   const elUsuarioYaFueRegistrado = () =>{
     lsUsuariosRegistrados = JSON.parse(localStorage.getItem('lsUsuariosRegistrados'))
     let nombreUsuarioIdentificado =  localStorage.getItem('nombreIdentificado');
     let apellidoUsuarioIdentificado = localStorage.getItem('apellidoIdentificado');
     let contraseñaUsuarioIdentificado = localStorage.getItem('contraseñaIdentificado');
     let fueRegistrado;
-    console.log(lsUsuariosRegistrados)
     if(lsUsuariosRegistrados == null){
       fueRegistrado = false;
     }
@@ -168,6 +169,13 @@ $(()=>{
   const autoElegidoParaLaCompra = (idPrecio) =>{
     return lsAutosClassic.find(auto => auto.id == idPrecio)
   };
+
+  
+  $('#presentacion').fadeOut(0);
+  $('#btn-leerMas').click(function mostrarPresentacion() { 
+    $('#presentacion').fadeToggle(0);
+      
+  });
 })
 
 /*siguiente mejoras: estilos a las alertas, cuando sea una compra exitosa el numero del carrito se ponga en cero,

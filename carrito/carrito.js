@@ -5,7 +5,7 @@ $(()=>{
     let precioAuto = Number(localStorage.getItem('precioTotal'))
     let lsComprasExitosas = [];
     articulo[0].innerHTML = `
-    <article>
+    <article id="article">
     <img src= ${imagenCompleta}>
         <ul class="ul">
             <li> marca: ${objAuto.marca}. </li>
@@ -19,15 +19,19 @@ $(()=>{
         </ul>
     </article>
     <button id="btn-comprar">Comprar</button>
-    <div id="alert-comprar"></div>
     `
+
+    
+
     $('#btn-comprar').on('click',()=>{
-        console.log($('#alert-comprar'))
-        $("#alert-comprar").html(`Compra exitosa!`)
         objAuto.precio = precioAuto;
         lsComprasExitosas.push(objAuto)
         console.log(lsComprasExitosas)
         localStorage.setItem('lsComprasExitosas',JSON.stringify(lsComprasExitosas))
         localStorage.setItem('numeroCarrito',0)
+        $("#btn-comprar").fadeOut(0)
+        $("#article").fadeOut(500)
+        $("body").append(`<div id="compraExitosa">Compra exitosa! para volver a comprar seleccione otro vehiculo.</div>`)
+        localStorage.removeItem('autoElegidoPorElUsuario')
     })
 })
