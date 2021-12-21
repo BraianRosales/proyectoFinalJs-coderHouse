@@ -176,7 +176,5 @@ $(()=>{
     $("#presentacion").fadeToggle(0);
   });
 
-})
-
-/*siguiente mejoras: estilos a las alertas, cuando sea una compra exitosa el numero del carrito se ponga en cero,
- mostrar la lista de compras en la pagina de Compras agregando las compras exitosas y dejando la pagina del carrito vacia.*/
+}
+)

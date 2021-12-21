@@ -1,17 +1,16 @@
-$(()=>{
-    const articulo = $("#articulo");
-    const URL = "../json/pago.json"
-    let objAuto = JSON.parse(localStorage.getItem("autoElegidoPorElUsuario"));
-    let imagenCompleta = "../inicio/" + objAuto.img;
-    let precioAuto = Number(localStorage.getItem("precioTotal"));
-    let lsComprasExitosas;
-    if(localStorage.getItem('lsComprasExitosas') == null){
-      lsComprasExitosas = []
-    }else{
-      lsComprasExitosas = JSON.parse(localStorage.getItem('lsComprasExitosas'))
-    }
-    
-    articulo[0].innerHTML = `
+$(() => {
+  const articulo = $("#articulo");
+  const URL = "../json/pago.json";
+  let objAuto = JSON.parse(localStorage.getItem("autoElegidoPorElUsuario"));
+  let imagenCompleta = "../inicio/" + objAuto.img;
+  let precioAuto = Number(localStorage.getItem("precioTotal"));
+  let lsComprasExitosas;
+  if (localStorage.getItem("lsComprasExitosas") == null) {
+    lsComprasExitosas = [];
+  } else {
+    lsComprasExitosas = JSON.parse(localStorage.getItem("lsComprasExitosas"));
+  }
+  articulo[0].innerHTML = `
     <article id="article">
     <img src= ${imagenCompleta}>
         <ul class="ul">
@@ -27,18 +26,18 @@ $(()=>{
         <button id="btn-comprar">Comprar</button>
     </article>
     `;
-    $("#btn-comprar").on("click", () => {
-      $("#btn-comprar").remove();
-      formularioDePago()
-    });
+  $("#btn-comprar").on("click", () => {
+    $("#btn-comprar").remove();
+    formularioDePago();
+  });
 
-    function formularioDePago(){ 
-      $.ajax({
-        method: "GET",
-        url: URL,
-        dataType: "JSON",
-      }).done((response)=>{
-        $("body").append(`
+  function formularioDePago() {
+    $.ajax({
+      method: "GET",
+      url: URL,
+      dataType: "JSON",
+    }).done((response) => {
+      $("body").append(`
         <div id="formulario-pago">
           <div id="div-select">
             <p id="p-select">tarjeta: </p>
@@ -69,27 +68,24 @@ $(()=>{
       </div>
         `);
 
-        $('#btn-confirmar').click(()=> { 
-          $('#articulo').prepend(`<div id="compraExitosa">Compra exitosa! sus compras se guardaran en la seccion de compras</div>`);
-          $('#compraExitosa').fadeOut(8000);
-          $('#formulario-pago').fadeOut(1000);
-          $('#btn-confirmar').remove()
-          localStorage.removeItem("autoElegidoPorElUsuario");
-          objAuto.precio = precioAuto;
-          localStorage.setItem("numeroCarrito", 0);
-          
-          //resolver el problema que no puedo agregar un auto a 'lsComprasExitosas'
-          
-          lsComprasExitosas.push(objAuto)
-          console.log(lsComprasExitosas)
-          localStorage.setItem('lsComprasExitosas',JSON.stringify(lsComprasExitosas))
-        });
-        // lsComprasExitosas = localStorage.getItem(JSON.parse(localStorage.getItem('lsComprasExitosas')))
+      $("#btn-confirmar").click(() => {
+        $("#articulo").prepend(
+          `<div id="compraExitosa">Compra exitosa! sus compras se guardaran en la seccion de compras</div>`
+        );
+        $("#compraExitosa").fadeOut(8000);
+        $("#formulario-pago").fadeOut(1000);
+        $("#btn-confirmar").remove();
+        localStorage.removeItem("autoElegidoPorElUsuario");
+        objAuto.precio = precioAuto;
+        localStorage.setItem("numeroCarrito", 0);
+        lsComprasExitosas.push(objAuto);
+        console.log(lsComprasExitosas);
+        localStorage.setItem(
+          "lsComprasExitosas",
+          JSON.stringify(lsComprasExitosas)
+        );
       });
-    }
-    // lsComprasExitosas = JSON.parse(localStorage.getItem('lsComprasExitosas'))
-//termina el ready.
-})
-
-
-
+    });
+  }
+  //termina el ready.
+});
