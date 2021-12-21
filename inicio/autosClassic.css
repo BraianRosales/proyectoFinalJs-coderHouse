@@ -5,7 +5,7 @@
 
 body {
   width: 100%;
-  background-color: #f0f5fa;
+  background-color: #f9fcff;
 }
 
 .clearfix {
@@ -111,7 +111,7 @@ nav > ul > li > a:hover{
 
 #alert {
   height: 35px;
-  background-color: #f0f5fa;
+  background-color: #f9fcff;
   width: 90%;
   margin-top: 40px;
   margin-bottom: 15px;
@@ -127,7 +127,7 @@ nav > ul > li > a:hover{
 #articulos {
   float: left;
   width: 67%;
-  background-color: #f0f5fa;
+  background-color: #f9fcff;
   margin-bottom: 15px;
   padding-top: 20px;
   padding-bottom: 20px;

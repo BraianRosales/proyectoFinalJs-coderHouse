@@ -1,0 +1,17 @@
+{
+    "numero": "numeros de la tarjeta",
+    "nombre": "nombre completo",
+    "fechaExp": "fecha de expiracion",
+    "cvc": "CVC",
+    "tipo": [
+        {"visa":"visa",
+             "img": "img-tarjetas/visa.png"
+        },
+        {"mastercard":"mastercar",
+            "img": "img-tarjetas/mastercard.jpg"
+        },
+        {"amex": "american express",
+            "img": "img-tarjetas/amex.png"
+        }
+    ]
+}

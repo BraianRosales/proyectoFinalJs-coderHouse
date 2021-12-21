@@ -1,182 +1,261 @@
 * {
-    margin: 0px auto;
-    padding: 0px auto;
-  }
-  
-  body {
-    width: 100%;
-    background-color: #f0f5fa;
-  }
-  
-  .clearfix {
-    clear: both;
-    float: none;
-  }
-  
-  /*-------------------CSS HEADER-----------------*/
-  header {
-    background-color: black;
-    width: 100%;
-    height: 110px;
-    margin: 0px auto;
-    font-family: "Courgette", cursive;
-  }
-  
-  #carrito {
-    color: lemonchiffon;
-    font-size: 50px;
-    right: 130px;
-    top: 25px;
-    position: absolute;
-  }
-  
-  #carrito > span{
-    font-size: 22px;
-    color: yellow;
-  }
-  
-  #btn-carrito{
-    color: white;
-    position: absolute;
-    right: 125px;
-    top: 80px;
-    font-size: 15px;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  
-  header > h1 {
-    margin-left: 30px;
-    font-size: 50px;
-    padding-top: 20px;
-    text-shadow: 1px 1px 2px black;
-    color: rgb(248, 248, 248);
-  }
-  
-  #icon-autoClasic{
-    color: lemonchiffon;
-    position: absolute;
-    left: 350px;
-    top:35px;
-    font-size: 40px;
-  }
-  
-  /*-------------------CSS NAV--------------------*/
-  
-  nav > ul {
-    text-align: center;
-    background-color: #daf0fd;
-  }
-  
-   nav > ul > li {
-    display: inline-block;
-    margin: 10px;
-    font-size: 22px;
-    cursor: pointer;
-    font:bold;
-    font-family: 'Shippori Antique', sans-serif;
-    margin-left: 30px;
-    margin-top: 13px;
-    transition: all 200ms;
-  }
-  
-  nav > ul > li:hover{
-    transform: scale(1.2,1.2);
-  }
-  
-  nav > ul > li > a{
-    color: black;
-    text-decoration: none;
-  }
+  margin: 0px auto;
+  padding: 0px auto;
+}
 
-  nav > ul > li > a:hover{
-    color: rgb(214, 195, 24);
-    text-shadow: 1px 2px 5px black;
-  }
-  
-  article {
-    display: block;
-    background-color: white;
-    width: 25%;
-    margin: 0px auto;
-    margin-top: 80px;
-    border: 1px solid rgb(216, 216, 216);
-    box-shadow: 1px 1px 6px rgb(151, 151, 151);
-    border-radius: 10px;
-  }
-  
-  article > img {
-    width: 100%;
-    height: 350px;
-  }
-  
-  .ul {
-    margin-left: -27px;
-    line-height: 15px;
-    list-style: none;
-    margin-bottom: 12px;
-  }
-  
-  
-  .ul > li{
-    width: 100%;
-    color: black;
-    font-size: 16px;
-    font-family: Arial, sans-serif;
-    padding-top: 5px;
-  }
-  
-  
-  .precio {
-    background-color: lemonchiffon;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    font-size: 22px;
-    cursor: pointer;
-  }
-  
-  .precio:hover{
-    background-color: rgb(255, 241, 161);
-    box-shadow:1px 1px 8px 1px rgb(255, 241, 161);
-  }
-  
-  article > h2 {
-    background-color: #ff8f00;
-    text-align: center;
-    color: whitesmoke;
-    font-family: Arial, sans-serif;
-    font-size: 20px;
-    min-height: 45px;
-    line-height: 45px;
-  }
-  
-  #btn-comprar{
-    display: block;
-    margin: 0px auto;
-    margin-top: 20px;
-    cursor: pointer;
-    font-size: 20px;
-    width: 14%;
-    height: 40px;
-  }
+body {
+  width: 100%;
+  background-color: #f9fcff;
+}
 
-  #articulo > p{
-    text-align: center;
-    font-size: 30px;
-    line-height: 200px;
-    color: rgb(194, 169, 32);
-  }
-  
- #compraExitosa{
+.clearfix {
+  clear: both;
+  float: none;
+}
+
+/*-------------------CSS HEADER-----------------*/
+header {
+  background-color: black;
+  width: 100%;
+  height: 110px;
+  margin: 0px auto;
+  font-family: "Courgette", cursive;
+}
+
+#carrito {
+  color: lemonchiffon;
+  font-size: 50px;
+  right: 130px;
+  top: 25px;
+  position: absolute;
+}
+
+#carrito > span {
+  font-size: 22px;
+  color: yellow;
+}
+
+#btn-carrito {
+  color: white;
+  position: absolute;
+  right: 125px;
+  top: 80px;
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+header > h1 {
+  margin-left: 30px;
+  font-size: 50px;
+  padding-top: 20px;
+  text-shadow: 1px 1px 2px black;
+  color: rgb(248, 248, 248);
+}
+
+#icon-autoClasic {
+  color: lemonchiffon;
+  position: absolute;
+  left: 350px;
+  top: 35px;
+  font-size: 40px;
+}
+
+/*-------------------CSS NAV--------------------*/
+
+nav > ul {
   text-align: center;
-  font-size: 25px;
-  color: rgb(32, 192, 32);
-  line-height: 200px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
- }
+  background-color: #daf0fd;
+}
 
-  span{
-    font-size: 22px;
-    color:yellow;
-  }
+nav > ul > li {
+  display: inline-block;
+  margin: 10px;
+  font-size: 22px;
+  cursor: pointer;
+  font: bold;
+  font-family: "Shippori Antique", sans-serif;
+  margin-left: 30px;
+  margin-top: 13px;
+  transition: all 200ms;
+}
+
+nav > ul > li:hover {
+  transform: scale(1.2, 1.2);
+}
+
+nav > ul > li > a {
+  color: black;
+  text-decoration: none;
+}
+
+nav > ul > li > a:hover {
+  color: rgb(214, 195, 24);
+  text-shadow: 1px 2px 5px black;
+}
+
+/*-------------------ARTICLE--------------------*/
+article {
+  display: block;
+  background-color: #f9fcff;
+  width: 25%;
+  margin-left: 500px;
+  margin-top: 80px;
+  border-radius: 10px;
+  float: left;
+}
+
+article > img {
+  width: 100%;
+  height: 350px;
+  border-radius: 3px;
+}
+
+.ul {
+  margin-left: -39px;
+  line-height: 15px;
+  list-style: none;
+  margin-bottom: 12px;
+}
+
+.ul > li {
+  width: 100%;
+  color: black;
+  font-size: 19px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  padding-top: 5px;
+  line-height: 17px;
+}
+
+.precio {
+  background-color: lemonchiffon;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.precio:hover {
+  background-color: rgb(255, 241, 161);
+  box-shadow: 1px 1px 8px 1px rgb(255, 241, 161);
+}
+
+article > h2 {
+  background-color: #ff8f00;
+  text-align: center;
+  color: whitesmoke;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  min-height: 45px;
+  line-height: 45px;
+}
+
+#btn-comprar {
+  display: block;
+  float: left;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 20px;
+  height: 30px;
+  width: 35%;
+  border-radius: 9px;
+  height: 30px;
+  outline: none;
+  color: rgb(167, 142, 4);
+  background-color: rgb(243, 239, 239);
+  border: 1px solid rgb(175, 175, 175);
+}
+
+#btn-comprar:hover {
+  background-color: rgb(59, 59, 59);
+  color: goldenrod;
+}
+
+#articulo > p {
+  text-align: center;
+  font-size: 30px;
+  line-height: 200px;
+  color: red;
+}
+
+#compraExitosa {
+  text-align: center;
+  font-size: 22px;
+  background-color: #bdffc1;
+  margin-top: 62px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif, Tahoma,
+    Geneva, Verdana, sans-serif;
+  margin-bottom: -38px;
+  width: 55%;
+  border-radius: 10px;
+  height: 35px;
+}
+
+span {
+  font-size: 22px;
+  color: yellow;
+}
+
+/*-------------------FORM--------------------*/
+
+#formulario-pago {
+  background-color: white;
+  width: 16%;
+  float: right;
+  margin-right: 473px;
+  margin-top: 76px;
+  padding: 10px;
+  border: 1px solid rgb(236, 236, 236);
+  min-height: 423px;
+  border-radius: 43px;
+  padding-left: 30px;
+}
+
+.label {
+  font-size: 20px;
+  margin: 10px;
+}
+
+.input {
+  width: 73%;
+  margin: 10px;
+  height: 20px;
+  margin-top: 5px;
+}
+
+#btn-confirmar {
+  display: block;
+  margin: 0px auto;
+  margin-top: 6px;
+  font-size: 20px;
+  cursor: pointer;
+  width: 35%;
+  border-radius: 9px;
+  height: 30px;
+  outline: none;
+  color: rgb(167, 142, 4);
+  background-color: rgb(243, 239, 239);
+  border: 1px solid rgb(175, 175, 175);
+}
+
+#btn-confirmar:hover {
+  background-color: rgb(59, 59, 59);
+  color: goldenrod;
+}
+
+#p-select {
+  font-size: 22px;
+}
+
+#select {
+  font-size: 20px;
+  margin: 10px;
+  margin-left: 33px;
+  margin-top: 15px;
+}
+
+.labelConInput {
+  margin-top: 5px;
+  margin-left: 25px;
+}

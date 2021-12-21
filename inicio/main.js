@@ -41,17 +41,17 @@ $(()=>{
   let precioAuto;
   let lsUsuariosRegistrados;
   
-  nroCarrito = localStorage.getItem('numeroCarrito')
-  $('#carrito')[0].innerHTML = `<span>${nroCarrito}</span>`;
+  nroCarrito = localStorage.getItem("numeroCarrito");
+  $("#carrito")[0].innerHTML = `<span>${nroCarrito}</span>`;
 
-  if(nroCarrito == null){
-    $('#carrito')[0].innerHTML = `<span>${0}</span>`;
+  if (nroCarrito == null) {
+    $("#carrito")[0].innerHTML = `<span>${0}</span>`;
   }
-  
+
   const agregarPropiedades = () => {
     for (const auto of lsAutosClassic) {
-      let articulos = $('#articulos');
-      articulos[0].innerHTML +=`
+      let articulos = $("#articulos");
+      articulos[0].innerHTML += `
       <article>
       <img src=${auto.img}>
           <ul class="ul">
@@ -64,118 +64,118 @@ $(()=>{
               <li> año: ${auto.año}. </li>
           </ul>
           <div class="precio" id="${auto.id}">${auto.precioEnString}</div>
-      </article>`
+      </article>`;
     }
   };
 
   agregarPropiedades();
 
-  $('.precio').on('click',(e)=>{
-    const idPrecio = Number(e.target.id)
-    localStorage.setItem('precioClickeado', e.target.textContent)
-    precioGuardado = localStorage.getItem('precioClickeado')
-    localStorage.setItem('autoClickeado', JSON.stringify(encuentraElAutoPorPrecio()))
-    siEsUsuarioRegistradoSeAplicaElDescuento()
-    localStorage.setItem('autoElegidoPorElUsuario',JSON.stringify(autoElegidoParaLaCompra(idPrecio)))
-    localStorage.setItem('precioTotal',precioAuto)
-    localStorage.setItem('numeroCarrito',"1")  
-    $('#carrito')[0].innerHTML = `<span>${localStorage.getItem('numeroCarrito')}</span>`;
-    alerta.fadeOut(5500)
-})
+  $(".precio").on("click", (e) => {
+    const idPrecio = Number(e.target.id);
+    localStorage.setItem("precioClickeado", e.target.textContent);
+    precioGuardado = localStorage.getItem("precioClickeado");
+    localStorage.setItem("autoClickeado",JSON.stringify(encuentraElAutoPorPrecio()));
+    siEsUsuarioRegistradoSeAplicaElDescuento();
+    localStorage.setItem("autoElegidoPorElUsuario",JSON.stringify(autoElegidoParaLaCompra(idPrecio)));
+    localStorage.setItem("precioTotal", precioAuto);
+    localStorage.setItem("numeroCarrito", "1");
+    $("#carrito")[0].innerHTML = `<span>${localStorage.getItem("numeroCarrito")}</span>`;
+    alerta.fadeOut(5500);
+  });
 
   const siEsUsuarioRegistradoSeAplicaElDescuento = () => {
-     let autoObjeto = JSON.parse(localStorage.getItem('autoClickeado'))
-     if(esUsuarioRegistrado() && sessionStorage.getItem('seIdentifico') == "si"){
-      aplicamosSuDescuento(autoObjeto)
-      alerta.fadeIn(0)
-     }
-     else{
-      pagaPrecioReal(autoObjeto)
-      alerta.fadeIn(0)
-     }
-   }
-   
-   const aplicamosSuDescuento = (autoObjeto) => {
-    precioAuto = autoObjeto.precio
-    let porcentaje = precioAuto * 0.1
-    precioAuto = precioAuto - porcentaje
-    alerta.css("background-color","rgb(173, 233, 186)");
-    alerta.html(`<p>Usuario identificado, aplicamos su descuento! su monto a pagar es de U$S ${precioAuto}.</p>`);
-    alerta.css("textAlign","center");
-    alerta.css("fontSize","20px");
-    alerta.css("lineHeight","35px")
-  }
-  
-  const pagaPrecioReal  = (autoObjeto) =>{
-    precioAuto = autoObjeto.precio
-    alerta.css("background-color","rgb(250, 251, 168)");
-    alerta.html(`<p> Usuario no identificado.Su monto a pagar es de U$S ${precioAuto}.</p>`);
-    alerta.css("textAlign","center");
-    alerta.css("fontSize","20px");
-    alerta.css("lineHeight","35px")
-  }
-  
-  const encuentraElAutoPorPrecio = () =>{
-    return lsAutosClassic.find((auto) => auto.precioEnString == precioGuardado);
-  }; 
-  
-  
-  const elUsuarioYaFueRegistrado = () =>{
-    lsUsuariosRegistrados = JSON.parse(localStorage.getItem('lsUsuariosRegistrados'))
-    let nombreUsuarioIdentificado =  localStorage.getItem('nombreIdentificado');
-    let apellidoUsuarioIdentificado = localStorage.getItem('apellidoIdentificado');
-    let contraseñaUsuarioIdentificado = localStorage.getItem('contraseñaIdentificado');
-    let fueRegistrado;
-    if(lsUsuariosRegistrados == null){
-      fueRegistrado = false;
+    let autoObjeto = JSON.parse(localStorage.getItem("autoClickeado"));
+    if (esUsuarioRegistrado() && sessionStorage.getItem("seIdentifico") == "si") {
+      aplicamosSuDescuento(autoObjeto);
+      alerta.fadeIn(0);
+    } else {
+      pagaPrecioReal(autoObjeto);
+      alerta.fadeIn(0);
     }
-    else{
-      fueRegistrado = lsUsuariosRegistrados.some(usuario => (usuario.nombre == nombreUsuarioIdentificado && usuario.apellido == apellidoUsuarioIdentificado) && (usuario.contraseña ==  contraseñaUsuarioIdentificado))
-    }
-    return fueRegistrado;
-  }
-
-  
-  const esUsuarioRegistrado = () => {
-    let esUsuarioRegistrado = false;
-    if(elUsuarioYaFueRegistrado())
-    {
-      esUsuarioRegistrado = true;
-    }
-    return esUsuarioRegistrado
-  }
-  
-  function handleEntrar(){
-  console.log(lsUsuariosRegistrados)
-  console.log(elUsuarioYaFueRegistrado())
-  seIdentifico = "si";
-  sessionStorage.setItem('seIdentifico',seIdentifico)
-  let nombreUsuario = (InputNombre[0].value).toLowerCase();
-  let apellidoUsuario = (InputApellido[0].value).toLowerCase()
-  let contraseñaUsuario = (InputContraseña[0].value).toLowerCase()
-  localStorage.setItem('nombreIdentificado',nombreUsuario)
-  localStorage.setItem('apellidoIdentificado',apellidoUsuario)
-  localStorage.setItem('contraseñaIdentificado',contraseñaUsuario)
-    if(esUsuarioRegistrado()){
-      alertIndentificate.html(`Usuario registrado!`);
-      alertIndentificate.css("color","green")
-    }
-    else{
-      alertIndentificate.html(`No es usuario registrado.`); 
-      alertIndentificate.css("color","red")
-    }
-  }
-
-  const autoElegidoParaLaCompra = (idPrecio) =>{
-    return lsAutosClassic.find(auto => auto.id == idPrecio)
   };
 
+  const aplicamosSuDescuento = (autoObjeto) => {
+    precioAuto = autoObjeto.precio;
+    let porcentaje = precioAuto * 0.1;
+    precioAuto = precioAuto - porcentaje;
+    alerta.css("background-color", "rgb(173, 233, 186)");
+    alerta.html( `<p>Usuario identificado, aplicamos su descuento! su monto a pagar es de U$S ${precioAuto}.</p>`);
+    alerta.css("textAlign", "center");
+    alerta.css("fontSize", "20px");
+    alerta.css("lineHeight", "35px");
+  };
+
+  const pagaPrecioReal = (autoObjeto) => {
+    precioAuto = autoObjeto.precio;
+    alerta.css("background-color", "rgb(250, 251, 168)");
+    alerta.html(`<p> Usuario no identificado.Su monto a pagar es de U$S ${precioAuto}.</p>`);
+    alerta.css("textAlign", "center");
+    alerta.css("fontSize", "20px");
+    alerta.css("lineHeight", "35px");
+  };
+
+  const encuentraElAutoPorPrecio = () => {
+    return lsAutosClassic.find((auto) => auto.precioEnString == precioGuardado);
+  };
+
+  const elUsuarioYaFueRegistrado = () => {
+    lsUsuariosRegistrados = JSON.parse(
+      localStorage.getItem("lsUsuariosRegistrados")
+    );
+    let nombreUsuarioIdentificado = localStorage.getItem("nombreIdentificado");
+    let apellidoUsuarioIdentificado = localStorage.getItem("apellidoIdentificado");
+    let contraseñaUsuarioIdentificado = localStorage.getItem("contraseñaIdentificado");
+    let fueRegistrado;
+    if (lsUsuariosRegistrados == null) {
+      fueRegistrado = false;
+    } else {
+      fueRegistrado = lsUsuariosRegistrados.some(
+        (usuario) =>
+          usuario.nombre == nombreUsuarioIdentificado &&
+          usuario.apellido == apellidoUsuarioIdentificado &&
+          usuario.contraseña == contraseñaUsuarioIdentificado
+      );
+    }
+    return fueRegistrado;
+  };
+
+  const esUsuarioRegistrado = () => {
+    let esUsuarioRegistrado = false;
+    if (elUsuarioYaFueRegistrado()) {
+      esUsuarioRegistrado = true;
+    }
+    return esUsuarioRegistrado;
+  };
   
-  $('#presentacion').fadeOut(0);
-  $('#btn-leerMas').click(function mostrarPresentacion() { 
-    $('#presentacion').fadeToggle(0);
-      
+  function handleEntrar() {
+    console.log(lsUsuariosRegistrados);
+    console.log(elUsuarioYaFueRegistrado());
+    seIdentifico = "si";
+    sessionStorage.setItem("seIdentifico", seIdentifico);
+    let nombreUsuario = InputNombre[0].value.toLowerCase();
+    let apellidoUsuario = InputApellido[0].value.toLowerCase();
+    let contraseñaUsuario = InputContraseña[0].value.toLowerCase();
+    localStorage.setItem("nombreIdentificado", nombreUsuario);
+    localStorage.setItem("apellidoIdentificado", apellidoUsuario);
+    localStorage.setItem("contraseñaIdentificado", contraseñaUsuario);
+    if (esUsuarioRegistrado()) {
+      alertIndentificate.html(`Usuario registrado!`);
+      alertIndentificate.css("color", "#4AC253");
+    } else {
+      alertIndentificate.html(`No es usuario registrado.`);
+      alertIndentificate.css("color", "red");
+    }
+  }
+
+  const autoElegidoParaLaCompra = (idPrecio) => {
+    return lsAutosClassic.find((auto) => auto.id == idPrecio);
+  };
+
+  $("#presentacion").fadeOut(0);
+  $("#btn-leerMas").click(function mostrarPresentacion() {
+    $("#presentacion").fadeToggle(0);
   });
+
 })
 
 /*siguiente mejoras: estilos a las alertas, cuando sea una compra exitosa el numero del carrito se ponga en cero,
