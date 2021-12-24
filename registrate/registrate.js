@@ -52,10 +52,7 @@ $(()=>{
         )
       );
       let lsUsuariosRegistradosString = JSON.stringify(lsUsuariosRegistrados);
-      localStorage.setItem(
-        "lsUsuariosRegistrados",
-        lsUsuariosRegistradosString
-      );
+      localStorage.setItem("lsUsuariosRegistrados",lsUsuariosRegistradosString );
       $("#alert").html(`Usuario registrado!`);
       $("#alert").css("color", "green");
     } else {
