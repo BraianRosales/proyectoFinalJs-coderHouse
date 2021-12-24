@@ -103,14 +103,24 @@ nav > ul > li > a:hover{
 /*----------------------CSS CARRUSEL-------------------*/
 #carrusel {
   width: 65%;
-  height: 350px;
-  border: 1px solid rgb(209, 208, 208);
+  height: 425px;
   margin-top: 60px;
-  margin-bottom: 15px;
+  margin-bottom:118px;
+}
+
+.bx-wrapper, .bx-viewport{
+  max-width: 1111px!important;
+  height: 404px!important;
+}
+
+.bx-wrapper img {
+  max-width: 101%;
+  height: 404px;
+  display: block;
 }
 
 #alert {
-  height: 35px;
+  min-height: 0px;
   background-color: #f9fcff;
   width: 90%;
   margin-top: 40px;

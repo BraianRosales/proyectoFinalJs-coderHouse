@@ -21,11 +21,20 @@
       src="https://kit.fontawesome.com/76088dd324.js"
       crossorigin="anonymous"
     ></script>
+    <!-- jquery-->
     <script
       src="https://code.jquery.com/jquery-3.6.0.js"
       integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
       crossorigin="anonymous"
     ></script>
+      <!-- ajax, tiene que cargar antes que el slider sino, no lo carga correctamente.-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- slider -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"/>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
   </head>
   <body>
     <header>
@@ -42,17 +51,29 @@
         <li><a href="#">Contacto</a></li>
       </ul>
     </nav>
+    <!-- carrusel -->
     <section id="carrusel">
-      <h1 id="titulo-carrusel">Carrusel</h1>
+      <div class="bxslider">
+        <div><img src="/inicio/img-logos/Mercedes benz.jpg" /></div>
+        <div><img src="/inicio/img-logos/cobra.jpg" /></div>
+        <div><img src="/inicio/img-logos/porsche.jpg" /></div>
+        <div><img src="/inicio/img-logos/mg.jpg" /></div>
+        <div><img src="/inicio/img-logos/ford.jpg"/></div>
+        <div><img src="/inicio/img-logos/subaru.jpg"/></div>
+        <div><img src="/inicio/img-logos/chevrolet.jpg"/></div>
+        <div><img src="/inicio/img-logos/jaguar.jpg"/></div>
+      </div>
     </section>
+    <!-- alerta -->
     <div id="alert"></div>
     <div id="contenidoPrincipal">
-      <!-- En esta seccion articulos van todos los autos a vender -->
+      <!-- en esta seccion articulos, aca se encuentran todos los autos a vender -->
       <section id="articulos" class="caja"></section>
       <aside>
+        <!-- caja de quienes somos -->
         <div id="quienesSomos">
           <div id="titulosAside">¿Quienes somos?</div>
-          <img src="img-autos/volante.jpg" alt="Imagen" />
+          <img src="img-logos/logo.png" alt="Imagen" />
           <p id="presentacion-inicial">Agencia de autos clasicos elegantes.</p>
           <p id="presentacion">
             Somos una agencia de ventas de autos clasicos/antiguos,lindos para
@@ -64,6 +85,7 @@
           </p>
           <div id="btn-leerMas">Click.</div>
         </div>
+        <!-- caja de indentificate/formulario identificate -->
         <div id="identificate">
           <div id="titulosAside">Identificate</div>
           <form>
@@ -81,12 +103,12 @@
           <div id="identificate-alerta"></div>
         </div>
       </aside>
+      <!-- clearfix elimina flotados -->
       <div class="clearfix"></div>
     </div>
     <footer>
       Pagina web realizada por &copy;Braian Rosales para el curso JavasScript.
     </footer>
   </body>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="autosClassic.js"></script>
 </html>

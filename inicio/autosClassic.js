@@ -1,4 +1,13 @@
 $(()=>{
+
+  $('.bxslider').bxSlider({
+    auto: true,
+    autoControls: true,
+    stopAutoOnClick: true,
+    pager: true,
+    slideWidth: 1111,
+  });
+
   class AutoClassic {
     constructor(id,marca,modelo,color,cantPuertas,kilometraje,combustible,año,precioEnString,precio,img) {
       this.id = id;
@@ -175,6 +184,6 @@ $(()=>{
   $("#btn-leerMas").click(function mostrarPresentacion() {
     $("#presentacion").fadeToggle(0);
   });
-
+    
 }
 )
