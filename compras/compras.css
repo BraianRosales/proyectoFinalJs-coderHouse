@@ -164,9 +164,9 @@ article > h2 {
   line-height: 45px;
 }
 
-#articulo > p {
+#articulos > p {
   text-align: center;
-  font-size: 30px;
+  font-size: 25px;
   line-height: 200px;
   color: red;
 }
@@ -181,4 +181,13 @@ article > h2 {
   padding-bottom: 20px;
   border-radius: 5px;
   margin-left: 21%;
+}
+
+#titulo{
+  font-size: 27px!important;
+  margin-top: 44px;
+  font-family: 'Courgette'!important;
+  color: black!important;
+  text-align: justify!important;
+  line-height: 0px!important;
 }

@@ -3,6 +3,7 @@
     "nombre": "nombre completo",
     "fechaExp": "fecha de expiracion",
     "cvc": "CVC",
+    "dni": "DNI",
     "tipo": [
         {"visa":"visa",
              "img": "img-tarjetas/visa.png"

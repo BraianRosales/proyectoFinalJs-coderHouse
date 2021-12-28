@@ -4,12 +4,11 @@ $(() => {
   let objAuto = JSON.parse(localStorage.getItem("autoElegidoPorElUsuario"));
   let imagenCompleta = "../inicio/" + objAuto.img;
   let precioAuto = Number(localStorage.getItem("precioTotal"));
-  let lsComprasExitosas;
-  if (localStorage.getItem("lsComprasExitosas") == null) {
-    lsComprasExitosas = [];
-  } else {
-    lsComprasExitosas = JSON.parse(localStorage.getItem("lsComprasExitosas"));
-  }
+  let lsUsuariosRegistrados =  JSON.parse(localStorage.getItem('lsUsuariosRegistrados'))
+  let apellidoIdentificado = localStorage.getItem("apellidoIdentificado")
+  let nombreIdentificado = localStorage.getItem("nombreIdentificado")
+  let contraseñaIdentificado = localStorage.getItem("contraseñaIdentificado")
+ 
   articulo[0].innerHTML = `
     <article id="article">
     <img src= ${imagenCompleta}>
@@ -63,27 +62,62 @@ $(() => {
             <label class="label" id="id-cvc">${response.cvc}</label> 
             <input type="text"  class="input">
           </div>
+          <div class="labelConInput"> 
+            <label class="label">${response.dni}</label> 
+            <input type="text" class="input" id="id-dni">
+          </div>
           </br>
           <button id="btn-confirmar">Confirmar</button>
       </div>
         `);
 
+      
+        function usuarioEncontrado(dniUsuarioComprando){
+          return lsUsuariosRegistrados.find(usuario => usuario.dni === dniUsuarioComprando)
+        }
+
+        function nuevaListaSinElUsuarioComprando(dniUsuarioComprando){
+          return lsUsuariosRegistrados.filter(usuario => usuario.dni !== dniUsuarioComprando)
+        }
+
+        function agregarAuto(dniUsuarioComprando){
+          //encontrar el usuario que realiza la compra.
+          let usuarioComprando = usuarioEncontrado(dniUsuarioComprando)
+           console.log(usuarioComprando)
+          //remuevo el usuarioComprando encontrado por su dni para despues agregar el modificado.
+          let lsSinUsuarioComprando = nuevaListaSinElUsuarioComprando(dniUsuarioComprando)
+          console.log(lsSinUsuarioComprando)
+          //le agrego al usuario el auto comprado en su lista de autosComprados
+          usuarioComprando.autosComprados.push(objAuto)
+          console.log(usuarioComprando)
+          //agrego a la nueva lista sin el usuario comprado el nuevo usuarioCreado agregandole el auto comprado.
+          lsSinUsuarioComprando.push(usuarioComprando)
+          console.log(lsSinUsuarioComprando)
+          //agrego la lista nueva editada al localStorage reemplazando la anterior.
+          localStorage.setItem('lsUsuariosRegistrados',JSON.stringify(lsSinUsuarioComprando))
+          console.log(localStorage.getItem('lsUsuariosRegistrados'))
+        }
+
+        function datosCoinciden(dniUsuarioComprando){
+          return( (usuarioEncontrado(dniUsuarioComprando).nombre == nombreIdentificado) && (usuarioEncontrado(dniUsuarioComprando).apellido == apellidoIdentificado)) && (usuarioEncontrado(dniUsuarioComprando).contraseña == contraseñaIdentificado)
+        }
+
       $("#btn-confirmar").click(() => {
-        $("#articulo").prepend(
-          `<div id="compraExitosa">Compra exitosa! sus compras se guardaran en la seccion de compras</div>`
-        );
+        $("#articulo").prepend(`<div id="compraExitosa">Compra exitosa! sus compras se guardaran en la seccion de compras</div>`);
         $("#compraExitosa").fadeOut(8000);
         $("#formulario-pago").fadeOut(1000);
         $("#btn-confirmar").remove();
         localStorage.removeItem("autoElegidoPorElUsuario");
         objAuto.precio = precioAuto;
         localStorage.setItem("numeroCarrito", 0);
-        lsComprasExitosas.push(objAuto);
-        console.log(lsComprasExitosas);
-        localStorage.setItem(
-          "lsComprasExitosas",
-          JSON.stringify(lsComprasExitosas)
-        );
+        //aca comienza el algoritmo de agregar autos al usuario identificado.
+        let dniUsuarioComprando = document.getElementById("id-dni").value;
+        localStorage.setItem('dniUsuarioComprando',dniUsuarioComprando)
+        dniUsuarioComprando = Number(dniUsuarioComprando)
+        //agrega el auto a la lista de autosComprados del usuario identificado.
+       if((sessionStorage.getItem('seIdentifico') === "si") && datosCoinciden(dniUsuarioComprando)){
+        agregarAuto( dniUsuarioComprando)
+       }
       });
     });
   }

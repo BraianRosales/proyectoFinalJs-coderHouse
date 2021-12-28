@@ -1,5 +1,4 @@
 $(()=>{
-
   $('.bxslider').bxSlider({
     auto: true,
     autoControls: true,
@@ -23,7 +22,7 @@ $(()=>{
       this.img = img;
     }
   }
-  
+
   let lsAutosClassic = [];
   const mgMidget1500 = new AutoClassic(0,"MG","midget 1500","Brooklands Green",2,74.448,"Nafta",1978, "U$S 55000",55000,"img-autos/MG-Midget-1500.jpg");
   const mercedesBenz280Sl = new AutoClassic(1,"Mercedes benz","280 Sl","Sun Yellow",2,90.358,"Nafta",1978,"U$S 80000",80000,"img-autos/MercedesBenz-280SL.jpg" );
@@ -79,6 +78,7 @@ $(()=>{
 
   agregarPropiedades();
 
+  //al hacer click sobre un precio de los autos manda el articulo del auto seleccionado a la seccion del carrito para concretar la compra.
   $(".precio").on("click", (e) => {
     const idPrecio = Number(e.target.id);
     localStorage.setItem("precioClickeado", e.target.textContent);
@@ -157,10 +157,6 @@ $(()=>{
   };
   
   function handleEntrar() {
-    console.log(lsUsuariosRegistrados);
-    console.log(elUsuarioYaFueRegistrado());
-    seIdentifico = "si";
-    sessionStorage.setItem("seIdentifico", seIdentifico);
     let nombreUsuario = InputNombre[0].value.toLowerCase();
     let apellidoUsuario = InputApellido[0].value.toLowerCase();
     let contraseñaUsuario = InputContraseña[0].value.toLowerCase();
@@ -168,11 +164,15 @@ $(()=>{
     localStorage.setItem("apellidoIdentificado", apellidoUsuario);
     localStorage.setItem("contraseñaIdentificado", contraseñaUsuario);
     if (esUsuarioRegistrado()) {
+      seIdentifico = "si";
+      sessionStorage.setItem("seIdentifico", seIdentifico);
       alertIndentificate.html(`Usuario registrado!`);
-      alertIndentificate.css("color", "#4AC253");
+      alertIndentificate.css("color", "#4AC253")
     } else {
-      alertIndentificate.html(`No es usuario registrado.`);
+      alertIndentificate.html(`No es usuario registrado.
+                              <a href="../registrate/registrate.html">Registrarme</a>`)
       alertIndentificate.css("color", "red");
+
     }
   }
 
