@@ -249,8 +249,18 @@ aside > #quienSoy > p {
 
 #identificate {
   width: 65%;
-  min-height: 400px;
   margin-top: 40px;
+  min-height: 148px;
+  padding: 10px;
+}
+
+#p-bienvenido{
+  text-align: center;
+  margin-right: 7px;
+  margin-top: 12px;
+  color: goldenrod;
+  font-size: 20px;
+  text-shadow: 1px 1px 7px rgb(255 255 165);
 }
 
 input {
@@ -263,7 +273,7 @@ label {
   color: black;
 }
 
-input[type="text"] {
+input[type="text"],input[type="password"] {
   margin: 10px;
   width: 60%;
   margin-left: -1px;
@@ -282,9 +292,8 @@ input[type="button"] {
   border-radius: 5px;
   background-color: rgb(243, 239, 239);
   border: 1px solid rgb(175, 175, 175);
+  margin-top: 8px!important;
 }
-
- 
 
 input[type="button"]:hover{
   background-color: rgb(59, 59, 59);
@@ -297,26 +306,26 @@ form {
   margin-top: 12px;
 }
 
-#identificate {
-  padding: 10px;
-}
+
 
 #identificate-alerta {
   width: 70%;
-  min-height: 30px;
+  min-height: 0px;
   margin-top: 7px;
   color: rgb(173, 233, 186);
   text-align: center;
-  font-size: 20px;
+  font-size: 19px;
 }
 
 a{
+  color: rgb(156, 148, 76);
   text-decoration: none;
-  color: rgb(189, 175, 47)
 }
 
 a:hover{
-  text-shadow: 1px 1px 10px yellow;
+  text-decoration: none;
+  color: goldenrod;
+  text-shadow: 1px 1px 7px rgb(255, 255, 165);
 }
 
 #presentacion{

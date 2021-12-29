@@ -45,7 +45,7 @@ $(()=>{
   const BtnEntrar = $('#btn-entrar')
   let alertIndentificate = $('#identificate-alerta')
   BtnEntrar.on('click',handleEntrar);
-  let seIdentifico = "no";
+  // let seIdentifico = "no";
   let precioAuto;
   let lsUsuariosRegistrados;
   
@@ -56,7 +56,7 @@ $(()=>{
     $("#carrito")[0].innerHTML = `<span>${0}</span>`;
   }
 
-  const agregarPropiedades = () => {
+  function agregarPropiedades () {
     for (const auto of lsAutosClassic) {
       let articulos = $("#articulos");
       articulos[0].innerHTML += `
@@ -92,7 +92,7 @@ $(()=>{
     alerta.fadeOut(5500);
   });
 
-  const siEsUsuarioRegistradoSeAplicaElDescuento = () => {
+  function siEsUsuarioRegistradoSeAplicaElDescuento (){
     let autoObjeto = JSON.parse(localStorage.getItem("autoClickeado"));
     if (esUsuarioRegistrado() && sessionStorage.getItem("seIdentifico") == "si") {
       aplicamosSuDescuento(autoObjeto);
@@ -103,7 +103,7 @@ $(()=>{
     }
   };
 
-  const aplicamosSuDescuento = (autoObjeto) => {
+  function aplicamosSuDescuento(autoObjeto){
     precioAuto = autoObjeto.precio;
     let porcentaje = precioAuto * 0.1;
     precioAuto = precioAuto - porcentaje;
@@ -114,7 +114,7 @@ $(()=>{
     alerta.css("lineHeight", "35px");
   };
 
-  const pagaPrecioReal = (autoObjeto) => {
+  function pagaPrecioReal(autoObjeto){
     precioAuto = autoObjeto.precio;
     alerta.css("background-color", "rgb(250, 251, 168)");
     alerta.html(`<p> Usuario no identificado.Su monto a pagar es de U$S ${precioAuto}.</p>`);
@@ -123,11 +123,11 @@ $(()=>{
     alerta.css("lineHeight", "35px");
   };
 
-  const encuentraElAutoPorPrecio = () => {
+  function encuentraElAutoPorPrecio(){
     return lsAutosClassic.find((auto) => auto.precioEnString == precioGuardado);
   };
 
-  const elUsuarioYaFueRegistrado = () => {
+  function elUsuarioYaFueRegistrado(){
     lsUsuariosRegistrados = JSON.parse(
       localStorage.getItem("lsUsuariosRegistrados")
     );
@@ -148,7 +148,7 @@ $(()=>{
     return fueRegistrado;
   };
 
-  const esUsuarioRegistrado = () => {
+  function esUsuarioRegistrado(){
     let esUsuarioRegistrado = false;
     if (elUsuarioYaFueRegistrado()) {
       esUsuarioRegistrado = true;
@@ -164,26 +164,35 @@ $(()=>{
     localStorage.setItem("apellidoIdentificado", apellidoUsuario);
     localStorage.setItem("contraseñaIdentificado", contraseñaUsuario);
     if (esUsuarioRegistrado()) {
-      seIdentifico = "si";
-      sessionStorage.setItem("seIdentifico", seIdentifico);
-      alertIndentificate.html(`Usuario registrado!`);
-      alertIndentificate.css("color", "#4AC253")
+          sessionStorage.setItem("seIdentifico", "si");
+          location.reload()
     } else {
-      alertIndentificate.html(`No es usuario registrado.
-                              <a href="../registrate/registrate.html">Registrarme</a>`)
+      alertIndentificate.html(`No registrado!
+      <a href="../registrate/registrate.html">Registrarme</a>`)
       alertIndentificate.css("color", "red");
-
     }
   }
 
-  const autoElegidoParaLaCompra = (idPrecio) => {
+  if(sessionStorage.getItem("seIdentifico") === "si"){
+      alertIndentificate.html(`Usuario registrado!`);
+      alertIndentificate.css("color", "#4AC253")
+      $('form').fadeOut(0);
+      alertIndentificate.fadeOut(0)
+      let nombreUsuario = localStorage.getItem("nombreIdentificado")
+      $("#identificate").append(`<p id="p-bienvenido">Bienvenido ${nombreUsuario.charAt(0).toUpperCase() + (nombreUsuario).slice(1)}!</p><input type="button" value="salir" id="btn-salir" />`);
+      $("#btn-salir").css("margin","0px auto")
+      $("#btn-salir").css("margin-top","6px")
+      
+      $('#btn-salir').click(()=>{
+        location.reload()
+        sessionStorage.setItem('seIdentifico',"no")
+      })
+  }
+  function autoElegidoParaLaCompra(idPrecio){
     return lsAutosClassic.find((auto) => auto.id == idPrecio);
   };
-
   $("#presentacion").fadeOut(0);
   $("#btn-leerMas").click(function mostrarPresentacion() {
     $("#presentacion").fadeToggle(0);
   });
-    
-}
-)
+})
