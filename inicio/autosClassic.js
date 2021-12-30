@@ -45,7 +45,6 @@ $(()=>{
   const BtnEntrar = $('#btn-entrar')
   let alertIndentificate = $('#identificate-alerta')
   BtnEntrar.on('click',handleEntrar);
-  // let seIdentifico = "no";
   let precioAuto;
   let lsUsuariosRegistrados;
   
@@ -179,7 +178,7 @@ $(()=>{
       $('form').fadeOut(0);
       alertIndentificate.fadeOut(0)
       let nombreUsuario = localStorage.getItem("nombreIdentificado")
-      $("#identificate").append(`<p id="p-bienvenido">Bienvenido ${nombreUsuario.charAt(0).toUpperCase() + (nombreUsuario).slice(1)}!</p><input type="button" value="salir" id="btn-salir" />`);
+      $("#identificate").append(`<p id="p-bienvenido">Bienvenido/a ${nombreUsuario.charAt(0).toUpperCase() + (nombreUsuario).slice(1)}!</p><input type="button" value="salir" id="btn-salir" />`);
       $("#btn-salir").css("margin","0px auto")
       $("#btn-salir").css("margin-top","6px")
       
@@ -192,7 +191,23 @@ $(()=>{
     return lsAutosClassic.find((auto) => auto.id == idPrecio);
   };
   $("#presentacion").fadeOut(0);
-  $("#btn-leerMas").click(function mostrarPresentacion() {
-    $("#presentacion").fadeToggle(0);
-  });
+  console.log(document.getElementById("btn-leerMas").textContent);
+
+  let textoElemento = document.getElementById("btn-leerMas").textContent;
+  $("#presentacion").fadeOut(0);
+  $('#btn-leerMas').click(()=>{
+    let txt;
+    if(textoElemento === "Leer mas"){
+      txt = document.getElementById("btn-leerMas");
+      txt.innerText = "Leer menos";
+      textoElemento = document.getElementById("btn-leerMas").textContent;
+      $("#presentacion").fadeIn(100)
+    }
+    else{
+      txt = document.getElementById("btn-leerMas");
+      txt.innerText = "Leer mas";
+      textoElemento = document.getElementById("btn-leerMas").textContent;
+      $("#presentacion").fadeOut(100);
+    }
+  })
 })

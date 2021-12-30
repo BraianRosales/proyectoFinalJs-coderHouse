@@ -14,29 +14,34 @@ $(() => {
   }
 
   if(seIdentifico === "si" && usuarioIdentificado() !== undefined){
-    const articulos = $("#articulos");
+    let articulos = $("#articulos");
     const nombreConMayuscula = (usuarioIdentificado().nombre).charAt(0).toUpperCase() + (usuarioIdentificado().nombre).slice(1);
     const apellidoConMayuscula = (usuarioIdentificado().apellido).charAt(0).toUpperCase() + (usuarioIdentificado().apellido).slice(1);
-    articulos[0].innerHTML = `<p id="titulo">Autos comprados de: ${nombreConMayuscula} ${apellidoConMayuscula}</p>`
-    for (const autoComprado of usuarioIdentificado().autosComprados) {
-        let imagenCompleta = "../inicio/" + autoComprado.img;
-        articulos[0].innerHTML += `
-        <article>
-          <img src=${imagenCompleta}>
-              <ul class="ul">
-                  <li> marca: ${autoComprado.marca}. </li>
-                  <li> nombre: ${autoComprado.modelo}. </li>
-                  <li> color: ${autoComprado.color}. </li>
-                  <li> cantidad de puertas: ${autoComprado.cantPuertas}. </li>
-                  <li> kilometraje: ${autoComprado.kilometraje} km. </li>
-                  <li> combustible: ${autoComprado.combustible}. </li>
-                  <li> año: ${autoComprado.año}. </li>
-                  <li> comprado por: <span>U$S ${autoComprado.precio}.</span> </li>
-              </ul>
-              <div class="precio">Comprado</div>
-          </article>
-      `;
-      }
+    console.log(typeof(usuarioIdentificado().autosComprados.length))
+    if(usuarioIdentificado().autosComprados.length === 0){
+      articulos[0].innerHTML = `<p id="titulo">${nombreConMayuscula} ${apellidoConMayuscula} todavia no compraste ningun auto classic.</p>`
+    }else{
+      articulos[0].innerHTML = `<p id="titulo">Autos comprados de: ${nombreConMayuscula} ${apellidoConMayuscula}</p>`
+      for (const autoComprado of usuarioIdentificado().autosComprados) {
+          let imagenCompleta = "../inicio/" + autoComprado.img;
+          articulos[0].innerHTML += `
+          <article>
+            <img src=${imagenCompleta}>
+                <ul class="ul">
+                    <li> marca: ${autoComprado.marca}. </li>
+                    <li> nombre: ${autoComprado.modelo}. </li>
+                    <li> color: ${autoComprado.color}. </li>
+                    <li> cantidad de puertas: ${autoComprado.cantPuertas}. </li>
+                    <li> kilometraje: ${autoComprado.kilometraje} km. </li>
+                    <li> combustible: ${autoComprado.combustible}. </li>
+                    <li> año: ${autoComprado.año}. </li>
+                    <li> comprado por: <span>U$S ${autoComprado.precio}.</span> </li>
+                </ul>
+                <div class="precio">Comprado</div>
+            </article>
+        `;
+        }
+    }
   }
   else{
     let articulos = $("#articulos");

@@ -56,7 +56,7 @@ $(() => {
           </div> 
           <div class="labelConInput"> 
             <label class="label">${response.fechaExp}</label>
-            <input type="text" class="input">
+            <input type="date" class="input">
           </div> 
           <div class="labelConInput"> 
             <label class="label" id="id-cvc">${response.cvc}</label> 
@@ -70,8 +70,6 @@ $(() => {
           <button id="btn-confirmar">Confirmar</button>
       </div>
         `);
-
-      
         function usuarioEncontrado(dniUsuarioComprando){
           return lsUsuariosRegistrados.find(usuario => usuario.dni === dniUsuarioComprando)
         }
