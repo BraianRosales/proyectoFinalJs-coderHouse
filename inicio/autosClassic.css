@@ -43,10 +43,12 @@ header {
   font-size: 15px;
   cursor: pointer;
   text-decoration: none;
+  transition: all 200ms;
 }
 
 #btn-carrito:hover{
   color: gold;
+  transform: scale(1.0,1.1);
 }
 
 header > h1 {
@@ -347,10 +349,12 @@ a:hover{
   margin-top: -5px;
   color: goldenrod;
   font-size: 15px;
+  transition: all 200ms;
 }
 
 #btn-leerMas:hover{
   color: gold;
+  transform: scale(1.0,1.1);
 }
 
 /*--------------------------CSS FOOTER-----------------------------------*/
