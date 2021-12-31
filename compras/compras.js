@@ -15,13 +15,13 @@ $(() => {
 
   if(seIdentifico === "si" && usuarioIdentificado() !== undefined){
     let articulos = $("#articulos");
-    const nombreConMayuscula = (usuarioIdentificado().nombre).charAt(0).toUpperCase() + (usuarioIdentificado().nombre).slice(1);
-    const apellidoConMayuscula = (usuarioIdentificado().apellido).charAt(0).toUpperCase() + (usuarioIdentificado().apellido).slice(1);
+    const nombreMayuscula = (usuarioIdentificado().nombre).charAt(0).toUpperCase() + (usuarioIdentificado().nombre).slice(1);
+    const apellidoMayuscula = (usuarioIdentificado().apellido).charAt(0).toUpperCase() + (usuarioIdentificado().apellido).slice(1);
     console.log(typeof(usuarioIdentificado().autosComprados.length))
     if(usuarioIdentificado().autosComprados.length === 0){
-      articulos[0].innerHTML = `<p id="titulo">${nombreConMayuscula} ${apellidoConMayuscula} todavia no compraste ningun auto classic.</p>`
+      articulos[0].innerHTML = `<p id="titulo">${nombreMayuscula} ${apellidoMayuscula} todavia no compraste ningun auto classic.</p>`
     }else{
-      articulos[0].innerHTML = `<p id="titulo">Autos comprados de: ${nombreConMayuscula} ${apellidoConMayuscula}</p>`
+      articulos[0].innerHTML = `<p id="titulo">Autos comprados de: ${nombreMayuscula} ${apellidoMayuscula}</p>`
       for (const autoComprado of usuarioIdentificado().autosComprados) {
           let imagenCompleta = "../inicio/" + autoComprado.img;
           articulos[0].innerHTML += `

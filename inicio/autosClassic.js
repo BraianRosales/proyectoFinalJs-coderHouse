@@ -183,8 +183,11 @@ $(()=>{
       $("#btn-salir").css("margin-top","6px")
       
       $('#btn-salir').click(()=>{
-        location.reload()
         sessionStorage.setItem('seIdentifico',"no")
+        localStorage.removeItem('autoElegidoPorElUsuario')
+        localStorage.setItem('numeroCarrito',0)
+        location.reload()
+        
       })
   }
   function autoElegidoParaLaCompra(idPrecio){

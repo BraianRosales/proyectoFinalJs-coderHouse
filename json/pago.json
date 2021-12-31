@@ -5,14 +5,8 @@
     "cvc": "CVC",
     "dni": "DNI",
     "tipo": [
-        {"visa":"visa",
-             "img": "img-tarjetas/visa.png"
-        },
-        {"mastercard":"mastercar",
-            "img": "img-tarjetas/mastercard.jpg"
-        },
-        {"amex": "american express",
-            "img": "img-tarjetas/amex.png"
-        }
+        {"visa":"visa"},
+        {"mastercard":"mastercar"},
+        {"amex": "american express"}
     ]
 }
