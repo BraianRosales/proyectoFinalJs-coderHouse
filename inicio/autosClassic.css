@@ -45,6 +45,10 @@ header {
   text-decoration: none;
 }
 
+#btn-carrito:hover{
+  color: gold;
+}
+
 header > h1 {
   margin-left: 30px;
   font-size: 50px;

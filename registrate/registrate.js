@@ -48,8 +48,6 @@ $(()=>{
       localStorage.setItem("apellidoUsuarioDelRegistro", apellido[0].value.toLowerCase());
       localStorage.setItem("contraseñaUsuarioDelRegistro",contraseña[0].value.toLowerCase());
       localStorage.setItem("dniUsuarioDelRegistro",Number(dni[0].value))
-      //console.log(Number(localStorage.getItem("dniUsuarioDelRegistro")))
-      //hacer un if para verificar si el usuario con el dni ya existe entonces no lo agrego a la lsDeUsuariosRegistrados.
       lsUsuariosRegistrados.push(new Usuario( localStorage.getItem("nombreUsuarioDelRegistro"),localStorage.getItem("apellidoUsuarioDelRegistro"),localStorage.getItem("contraseñaUsuarioDelRegistro"),localStorage.getItem('dniUsuarioDelRegistro')));
       let lsUsuariosRegistradosString = JSON.stringify(lsUsuariosRegistrados);
       localStorage.setItem("lsUsuariosRegistrados",lsUsuariosRegistradosString);
