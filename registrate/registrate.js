@@ -54,7 +54,7 @@ $(()=>{
       let lsUsuariosRegistradosString = JSON.stringify(lsUsuariosRegistrados);
       localStorage.setItem("lsUsuariosRegistrados",lsUsuariosRegistradosString);
       $("#alert").html(`Usuario registrado!`);
-      $("#alert").css("color", "green");
+      $("#alert").css("color","limegreen");
     } else {
       $("#alert").html(
         `Usuario no registrado.Verfique que ningun campo este vacio y que las contraseñas coincidan.`

@@ -47,6 +47,7 @@ $(()=>{
   BtnEntrar.on('click',handleEntrar);
   let precioAuto;
   let lsUsuariosRegistrados;
+  let textoElemento = document.getElementById("btn-leerMas").textContent;
   
   nroCarrito = localStorage.getItem("numeroCarrito");
   $("#carrito")[0].innerHTML = `<span>${nroCarrito}</span>`;
@@ -55,7 +56,7 @@ $(()=>{
     $("#carrito")[0].innerHTML = `<span>${0}</span>`;
   }
 
-  function agregarPropiedades () {
+  //agrega propiedades a los articulos en venta de la pagina.
     for (const auto of lsAutosClassic) {
       let articulos = $("#articulos");
       articulos[0].innerHTML += `
@@ -72,10 +73,9 @@ $(()=>{
           </ul>
           <div class="precio" id="${auto.id}">${auto.precioEnString}</div>
       </article>`;
-    }
   };
 
-  agregarPropiedades();
+  
 
   //al hacer click sobre un precio de los autos manda el articulo del auto seleccionado a la seccion del carrito para concretar la compra.
   $(".precio").on("click", (e) => {
@@ -196,20 +196,21 @@ $(()=>{
   $("#presentacion").fadeOut(0);
   console.log(document.getElementById("btn-leerMas").textContent);
 
-  let textoElemento = document.getElementById("btn-leerMas").textContent;
+  function nuevaEscritura(escritura){
+    txt = document.getElementById("btn-leerMas");
+      txt.innerText = escritura;
+      textoElemento = document.getElementById("btn-leerMas").textContent;
+  }
+
   $("#presentacion").fadeOut(0);
   $('#btn-leerMas').click(()=>{
     let txt;
     if(textoElemento === "Leer mas"){
-      txt = document.getElementById("btn-leerMas");
-      txt.innerText = "Leer menos";
-      textoElemento = document.getElementById("btn-leerMas").textContent;
+      nuevaEscritura("Leer menos")
       $("#presentacion").fadeIn(100)
     }
     else{
-      txt = document.getElementById("btn-leerMas");
-      txt.innerText = "Leer mas";
-      textoElemento = document.getElementById("btn-leerMas").textContent;
+      nuevaEscritura("Leer mas")
       $("#presentacion").fadeOut(100);
     }
   })
