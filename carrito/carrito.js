@@ -39,7 +39,7 @@ $(() => {
       $("body").append(`
         <div id="formulario-pago">
           <div id="div-select">
-            <p id="p-select">tarjeta: </p>
+            <p id="p-select">Tarjeta: </p>
               <select id="select">
                 <option value="value1">${response.tipo[0].visa}</option>
                 <option value="value2">${response.tipo[1].mastercard}</option>
@@ -48,11 +48,13 @@ $(() => {
           </div>
           <div class="labelConInput"> 
             <label class="label">${response.numero}</label>
-            <input class="input" type="text">
+            <input class="input" type="text" id="num-tarjeta">
+            <div class="error-input" name="num-tarjeta"></div>
           </div> 
           <div class="labelConInput"> 
             <label class="label">${response.nombre}</label>
-            <input class="input" type="text">
+            <input class="input" type="text" id="nombre-Completo">
+            <span class="error-input" name="nombre"></span>
           </div> 
           <div class="labelConInput"> 
             <label class="label">${response.fechaExp}</label>
@@ -60,11 +62,13 @@ $(() => {
           </div> 
           <div class="labelConInput"> 
             <label class="label" id="id-cvc">${response.cvc}</label> 
-            <input type="text"  class="input">
+            <input type="password" class="input" id="id-CVC">
+            <span class="error-input" name="cvc"></span>
           </div>
           <div class="labelConInput"> 
             <label class="label">${response.dni}</label> 
             <input type="text" class="input" id="id-dni">
+            <span class="error-input" name="dni"></span>
           </div>
           </br>
           <button id="btn-confirmar">Confirmar</button>
@@ -99,25 +103,105 @@ $(() => {
         function datosCoinciden(dniUsuarioComprando){
           return( (usuarioEncontrado(dniUsuarioComprando).nombre == nombreIdentificado) && (usuarioEncontrado(dniUsuarioComprando).apellido == apellidoIdentificado)) && (usuarioEncontrado(dniUsuarioComprando).contraseña == contraseñaIdentificado)
         }
+        
+        function nroTarjetaValido(){
+          let numeroTarjeta = $("#num-tarjeta");
+          numTarjetaString = numeroTarjeta[0].value;
+          numeroTarjeta = Number(numeroTarjeta[0].value);
+          let numValido = false;
+            if ((numTarjetaString.length == 16) && !isNaN(numeroTarjeta)) {
+                  numValido = true;
+                  $('#error-numTarjeta').fadeOut(0)
+            } else {
+                  $('.error-input')[0].innerHTML = `<p id="error-numTarjeta">• Solo se aceptan 16 digitos</p>`
+                  $('#error-numTarjeta').css("color","red")  
+                  $('#error-numTarjeta').css("margin-left","44px")
+                  $('#error-numTarjeta').css("margin-top","-6px")
+            }
+          return numValido;
+        }
+
+        function nombreValido(){  
+          let nombreTarjeta = $('#nombre-Completo')
+          nombreTarjetaString = nombreTarjeta[0].value;
+          nombreTarjeta = Number(nombreTarjeta[0].value);
+          let nomValido = false;
+          if (typeof(nombreTarjetaString) == "string" && isNaN(nombreTarjeta))  {
+            nomValido = true;
+            $('#error-nomTarjeta').fadeOut(0)
+          } else {
+            $('.error-input')[1].innerHTML = `<p id="error-nomTarjeta">• Solo se aceptan letras</p>`
+            $('#error-nomTarjeta').css("color","red")  
+            $('#error-nomTarjeta').css("margin-left","44px")
+            $('#error-nomTarjeta').css("margin-top","-6px")
+            $('#error-nomTarjeta').css("font-size","17px")
+          }
+          return nomValido;
+        }
+
+        function cvcValido(){
+          let cvcTarjeta = $('#id-CVC');
+          cvcTarjeta = cvcTarjeta[0].value;
+          cvcTarjeta = Number(cvcTarjeta);
+          cvcTarjetaString = String(cvcTarjeta);
+          let cvcVal = false;
+            if (!isNaN(cvcTarjeta) && cvcTarjetaString.length == 3) {
+              cvcVal = true;
+              $('#error-cvcTarjeta').fadeOut(0)
+            } else {
+              $('.error-input')[2].innerHTML = `<p id="error-cvcTarjeta">• Solo se aceptan 3 digitos</p>`
+              $('#error-cvcTarjeta').css("color","red")  
+              $('#error-cvcTarjeta').css("margin-left","44px")
+              $('#error-cvcTarjeta').css("margin-top","-6px")
+              $('#error-cvcTarjeta').css("font-size","17px")
+            }
+          return cvcVal;
+          }
+
+          function dniValido(){
+            let dniTarjeta = $('#id-dni');
+            dniTarjeta = dniTarjeta[0].value;
+            dniTarjeta = Number(dniTarjeta);
+            dniTarjetaString = String(dniTarjeta);
+            let dniVal = false;
+            if (!isNaN(dniTarjeta) && dniTarjetaString.length == 8) {
+              dniVal = true;
+              $('#error-dniTarjeta').fadeOut(0)
+            } else {
+              $('.error-input')[3].innerHTML = `<p id="error-dniTarjeta">• Solo se aceptan 8 digitos</p>`
+              $('#error-dniTarjeta').css("color","red")  
+              $('#error-dniTarjeta').css("margin-left","44px")
+              $('#error-dniTarjeta').css("margin-top","-6px")
+              $('#error-dniTarjeta').css("font-size","17px")
+            }
+          return dniVal;
+          }
+
+          function datosTarjetasValidos(){
+            return nroTarjetaValido() && nombreValido() && cvcValido() && dniValido()
+          }
 
       $("#btn-confirmar").click(() => {
-        $("#articulo").prepend(`<div id="compraExitosa">Compra exitosa! sus compras se guardaran en la seccion de compras</div>`);
-        $("#compraExitosa").fadeOut(8000);
-        $("#formulario-pago").fadeOut(1000);
-        $("#btn-confirmar").remove();
-        localStorage.removeItem("autoElegidoPorElUsuario");
-        objAuto.precio = precioAuto;
-        localStorage.setItem("numeroCarrito", 0);
-        //aca comienza el algoritmo de agregar autos al usuario identificado.
-        let dniUsuarioComprando = document.getElementById("id-dni").value;
-        localStorage.setItem('dniUsuarioComprando',dniUsuarioComprando)
-        dniUsuarioComprando = Number(dniUsuarioComprando)
-        //agrega el auto a la lista de autosComprados del usuario identificado.
-       if((sessionStorage.getItem('seIdentifico') === "si") && datosCoinciden(dniUsuarioComprando)){
-        agregarAuto( dniUsuarioComprando)
-       }
+       if(datosTarjetasValidos()) {
+          $("#articulo").prepend(`<div id="compraExitosa">Compra exitosa! sus compras se guardaran en la seccion de compras</div>`);
+          $("#compraExitosa").fadeOut(8000);
+          $("#formulario-pago").fadeOut(1000);
+          $("#btn-confirmar").remove();
+          localStorage.removeItem("autoElegidoPorElUsuario");
+          objAuto.precio = precioAuto;
+          localStorage.setItem("numeroCarrito", 0);
+          //aca comienza el algoritmo de agregar autos al usuario identificado.
+          let dniUsuarioComprando = document.getElementById("id-dni").value;
+          localStorage.setItem('dniUsuarioComprando',dniUsuarioComprando)
+          dniUsuarioComprando = Number(dniUsuarioComprando)
+          //agrega el auto a la lista de autosComprados del usuario identificado.
+          if((sessionStorage.getItem('seIdentifico') === "si") && datosCoinciden(dniUsuarioComprando)){
+            agregarAuto( dniUsuarioComprando)
+          }
+       };
       });
     });
   }
+  //crear mas restricciones vamos bien!
   //termina el ready.
 });

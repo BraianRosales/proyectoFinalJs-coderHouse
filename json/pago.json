@@ -1,12 +1,12 @@
 {
-    "numero": "numeros de la tarjeta",
-    "nombre": "nombre completo",
-    "fechaExp": "fecha de expiracion",
+    "numero": "Numeros de la tarjeta",
+    "nombre": "Nombre completo",
+    "fechaExp": "Fecha de expiracion",
     "cvc": "CVC",
     "dni": "DNI",
     "tipo": [
-        {"visa":"visa"},
-        {"mastercard":"mastercar"},
-        {"amex": "american express"}
+        {"visa":"Visa"},
+        {"mastercard":"Mastercar"},
+        {"amex": "American express"}
     ]
 }
