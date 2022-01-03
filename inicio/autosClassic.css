@@ -111,7 +111,7 @@ nav > ul > li > a:hover{
   width: 65%;
   height: 425px;
   margin-top: 60px;
-  margin-bottom:118px;
+  margin-bottom:96px;
 }
 
 .bx-wrapper, .bx-viewport{
@@ -130,7 +130,7 @@ nav > ul > li > a:hover{
   background-color: #f9fcff;
   width: 90%;
   margin-top: 40px;
-  margin-bottom: 15px;
+  margin-bottom: -10px;
   border-radius: 5px;
 }
 

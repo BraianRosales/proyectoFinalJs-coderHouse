@@ -41,6 +41,10 @@ $(()=>{
 
   btnRegistrar.on("click", handleRegistrar);
 
+  function redireccionar(){
+    location.href = "../inicio/autosClassic.html"
+  }
+
   function handleRegistrar() {
     $("body").append(`<div id="alert"></div>`);
     if (todosLosCamposSonValidos()) {
@@ -53,6 +57,7 @@ $(()=>{
       localStorage.setItem("lsUsuariosRegistrados",lsUsuariosRegistradosString);
       $("#alert").html(`Usuario registrado!`);
       $("#alert").css("color","limegreen");
+      setTimeout(redireccionar,1000);
     } else {
       $("#alert").html(
         `Usuario no registrado.Verfique que ningun campo este vacio y que las contraseñas coincidan.`

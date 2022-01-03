@@ -75,8 +75,10 @@ $(()=>{
       </article>`;
   };
 
-  
-
+  function redireccionar(){
+    location.href = "../carrito/carrito.html"
+  }
+   
   //al hacer click sobre un precio de los autos manda el articulo del auto seleccionado a la seccion del carrito para concretar la compra.
   $(".precio").on("click", (e) => {
     const idPrecio = Number(e.target.id);
@@ -88,7 +90,9 @@ $(()=>{
     localStorage.setItem("precioTotal", precioAuto);
     localStorage.setItem("numeroCarrito", "1");
     $("#carrito")[0].innerHTML = `<span>${localStorage.getItem("numeroCarrito")}</span>`;
-    alerta.fadeOut(5500);
+    $('html, body').animate({scrollTop:1}, 'slow'); //seleccionamos etiquetas,clase o identificador destino, creamos animación hacia top de la página
+    alerta.fadeOut(4500);
+    setTimeout(redireccionar,4000);
   });
 
   function siEsUsuarioRegistradoSeAplicaElDescuento (){
@@ -194,7 +198,6 @@ $(()=>{
     return lsAutosClassic.find((auto) => auto.id == idPrecio);
   };
   $("#presentacion").fadeOut(0);
-  console.log(document.getElementById("btn-leerMas").textContent);
 
   function nuevaEscritura(escritura){
     txt = document.getElementById("btn-leerMas");

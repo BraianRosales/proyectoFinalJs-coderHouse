@@ -181,10 +181,14 @@ $(() => {
             return nroTarjetaValido() && nombreValido() && cvcValido() && dniValido()
           }
 
+          function redireccionar(){
+            location.href = "../inicio/autosClassic.html"
+          }
+
       $("#btn-confirmar").click(() => {
        if(datosTarjetasValidos()) {
           $("#articulo").prepend(`<div id="compraExitosa">Compra exitosa! sus compras se guardaran en la seccion de compras</div>`);
-          $("#compraExitosa").fadeOut(8000);
+          $("#compraExitosa").fadeOut(5000);
           $("#formulario-pago").fadeOut(1000);
           $("#btn-confirmar").remove();
           localStorage.removeItem("autoElegidoPorElUsuario");
@@ -192,16 +196,17 @@ $(() => {
           localStorage.setItem("numeroCarrito", 0);
           //aca comienza el algoritmo de agregar autos al usuario identificado.
           let dniUsuarioComprando = document.getElementById("id-dni").value;
-          localStorage.setItem('dniUsuarioComprando',dniUsuarioComprando)
-          dniUsuarioComprando = Number(dniUsuarioComprando)
+          localStorage.setItem('dniUsuarioComprando',dniUsuarioComprando);
+          dniUsuarioComprando = Number(dniUsuarioComprando);
+           localStorage.setItem('seConcretoLaCompra',"si");
           //agrega el auto a la lista de autosComprados del usuario identificado.
           if((sessionStorage.getItem('seIdentifico') === "si") && datosCoinciden(dniUsuarioComprando)){
-            agregarAuto( dniUsuarioComprando)
+            agregarAuto(dniUsuarioComprando);
           }
+          setTimeout(redireccionar,4500);
        };
       });
     });
   }
-  //crear mas restricciones vamos bien!
   //termina el ready.
 });
