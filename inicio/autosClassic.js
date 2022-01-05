@@ -24,6 +24,8 @@ $(()=>{
   }
 
   let lsAutosClassic = [];
+  let lsAutosComprados = localStorage.getItem('lsAutosComprados');
+  lsAutosComprados = JSON.parse(localStorage.getItem('lsAutosComprados'));
   const mgMidget1500 = new AutoClassic(0,"MG","midget 1500","Brooklands Green",2,74.448,"Nafta",1978, "U$S 55000",55000,"img-autos/MG-Midget-1500.jpg");
   const mercedesBenz280Sl = new AutoClassic(1,"Mercedes benz","280 Sl","Sun Yellow",2,90.358,"Nafta",1978,"U$S 80000",80000,"img-autos/MercedesBenz-280SL.jpg" );
   const acCobra = new AutoClassic(2,"AC", "cobra", "Deep Impact Blue Metallic", 2,31.397,"Nafta", 2013,"U$S 80000",80000,"img-autos/AC-Cobra.jpg");
@@ -60,7 +62,7 @@ $(()=>{
     for (const auto of lsAutosClassic) {
       let articulos = $("#articulos");
       articulos[0].innerHTML += `
-      <article>
+      <article class="articleId">
       <img src=${auto.img}>
           <ul class="ul">
               <li> marca: ${auto.marca}. </li>
@@ -73,6 +75,7 @@ $(()=>{
           </ul>
           <div class="precio" id="${auto.id}">${auto.precioEnString}</div>
       </article>`;
+      
   };
 
   function redireccionar(){
@@ -216,5 +219,38 @@ $(()=>{
       nuevaEscritura("Leer mas")
       $("#presentacion").fadeOut(100);
     }
-  })
+  }) 
+
+  function idesAutosComprados(){
+    return lsAutosComprados.map(auto => auto.id)
+  }
+ 
+ function autoEstaComprado(auto){
+      return idesAutosComprados().includes(auto.id)
+ }
+
+
+ for (let index = 0; index < lsAutosComprados.length; index++) {
+   const element = lsAutosComprados[index];
+
+ }
+
+  for (const auto of lsAutosClassic) {
+    if (autoEstaComprado(auto)) {
+    let article = $('.articleId')
+    article[auto.id].innerHTML = `
+    <img src=${auto.img}>
+    <ul class="ul">
+        <li> marca: ${auto.marca}. </li>
+        <li> nombre: ${auto.modelo}. </li>
+        <li> color: ${auto.color}. </li>
+        <li> cantidad de puertas: ${auto.cantPuertas}. </li>
+        <li> kilometraje: ${auto.kilometraje} km. </li>
+        <li> combustible: ${auto.combustible}. </li>
+        <li> año: ${auto.año}. </li>
+    </ul>
+    <div class="autoComprado" id="${auto.id}">Auto comprado</div>
+    `
+    }
+  }
 })

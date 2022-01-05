@@ -162,6 +162,15 @@ article {
   cursor: pointer;
 }
 
+.autoComprado{
+  background-color: lemonchiffon;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
 article:hover{
   transform: scale(1.1,1.1);
   box-shadow:1px 1px 10px 1px rgb(39, 39, 39);

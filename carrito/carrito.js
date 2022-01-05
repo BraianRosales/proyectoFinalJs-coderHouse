@@ -8,7 +8,16 @@ $(() => {
   let apellidoIdentificado = localStorage.getItem("apellidoIdentificado")
   let nombreIdentificado = localStorage.getItem("nombreIdentificado")
   let contraseñaIdentificado = localStorage.getItem("contraseñaIdentificado")
- 
+  let lsAutosComprados;
+  
+  //ALGORITMO IMPORTANTE PARA IR PUSHEANDO LOS AUTOS COMPRADOS.
+  if (localStorage.getItem('lsAutosComprados') == null) {
+    lsAutosComprados = [];
+  }
+  else{
+    lsAutosComprados = JSON.parse(localStorage.getItem('lsAutosComprados'))
+  }
+
   articulo[0].innerHTML = `
     <article id="article">
     <img src= ${imagenCompleta}>
@@ -186,25 +195,28 @@ $(() => {
           }
 
       $("#btn-confirmar").click(() => {
-       if(datosTarjetasValidos()) {
-          $("#articulo").prepend(`<div id="compraExitosa">Compra exitosa! sus compras se guardaran en la seccion de compras</div>`);
-          $("#compraExitosa").fadeOut(5000);
-          $("#formulario-pago").fadeOut(1000);
-          $("#btn-confirmar").remove();
-          localStorage.removeItem("autoElegidoPorElUsuario");
-          objAuto.precio = precioAuto;
-          localStorage.setItem("numeroCarrito", 0);
-          //aca comienza el algoritmo de agregar autos al usuario identificado.
-          let dniUsuarioComprando = document.getElementById("id-dni").value;
-          localStorage.setItem('dniUsuarioComprando',dniUsuarioComprando);
-          dniUsuarioComprando = Number(dniUsuarioComprando);
+        let autoElegidoPorElUsuario =JSON.parse(localStorage.getItem('autoElegidoPorElUsuario')) ;
+        lsAutosComprados.push(autoElegidoPorElUsuario);
+        localStorage.setItem('lsAutosComprados',JSON.stringify(lsAutosComprados))
+        if(datosTarjetasValidos()) {
+           $("#articulo").prepend(`<div id="compraExitosa">Compra exitosa! sus compras se guardaran en compras si esta registrado.</div>`);
+           $("#compraExitosa").fadeOut(5000);
+           $("#formulario-pago").fadeOut(1000);
+           $("#btn-confirmar").remove();
+           localStorage.removeItem("autoElegidoPorElUsuario");
+           objAuto.precio = precioAuto;
+           localStorage.setItem("numeroCarrito", 0);
+           //aca comienza el algoritmo de agregar autos al usuario identificado.
+           let dniUsuarioComprando = document.getElementById("id-dni").value;
+           localStorage.setItem('dniUsuarioComprando',dniUsuarioComprando);
+           dniUsuarioComprando = Number(dniUsuarioComprando);
            localStorage.setItem('seConcretoLaCompra',"si");
-          //agrega el auto a la lista de autosComprados del usuario identificado.
-          if((sessionStorage.getItem('seIdentifico') === "si") && datosCoinciden(dniUsuarioComprando)){
-            agregarAuto(dniUsuarioComprando);
-          }
-          setTimeout(redireccionar,4500);
-       };
+           //agrega el auto a la lista de autosComprados del usuario identificado.
+           if((sessionStorage.getItem('seIdentifico') === "si") && datosCoinciden(dniUsuarioComprando)){
+             agregarAuto(dniUsuarioComprando);
+           }
+           setTimeout(redireccionar,4500);
+        };
       });
     });
   }
