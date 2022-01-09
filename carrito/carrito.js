@@ -4,9 +4,7 @@ $(() => {
   let objAuto = JSON.parse(localStorage.getItem("autoElegidoPorElUsuario"));
   let imagenCompleta = "../inicio/" + objAuto.img;
   let precioAuto = Number(localStorage.getItem("precioTotal"));
-  let lsUsuariosRegistrados = JSON.parse(
-    localStorage.getItem("lsUsuariosRegistrados")
-  );
+  let lsUsuariosRegistrados = JSON.parse(localStorage.getItem("lsUsuariosRegistrados"));
   let apellidoIdentificado = localStorage.getItem("apellidoIdentificado");
   let nombreIdentificado = localStorage.getItem("nombreIdentificado");
   let contraseñaIdentificado = localStorage.getItem("contraseñaIdentificado");
@@ -18,6 +16,8 @@ $(() => {
   } else {
     lsAutosComprados = JSON.parse(localStorage.getItem("lsAutosComprados"));
   }
+
+  $('#nota').fadeOut(0)
 
   articulo[0].innerHTML = `
     <article id="article">
@@ -35,8 +35,12 @@ $(() => {
         <button id="btn-comprar">Comprar</button>
     </article>
     `;
-  $("#btn-comprar").on("click", () => {
-    $("#btn-comprar").remove();
+
+  $('#btn-comprar').on("click", () => {
+    $('#btn-comprar').remove();
+    $('#nota').fadeIn()
+    $('#nota')[0].innerHTML = `Nota: <br>
+    Para que se guarde su compra debe ingresar al formulario el DNI con el que se registro y estar identificado.`
     formularioDePago();
   });
 
@@ -85,15 +89,11 @@ $(() => {
       </div>
         `);
       function usuarioEncontrado(dniUsuarioComprando) {
-        return lsUsuariosRegistrados.find(
-          (usuario) => usuario.dni === dniUsuarioComprando
-        );
+        return lsUsuariosRegistrados.find((usuario) => usuario.dni === dniUsuarioComprando);
       }
 
       function nuevaListaSinElUsuarioComprando(dniUsuarioComprando) {
-        return lsUsuariosRegistrados.filter(
-          (usuario) => usuario.dni !== dniUsuarioComprando
-        );
+        return lsUsuariosRegistrados.filter((usuario) => usuario.dni !== dniUsuarioComprando);
       }
 
       function agregarAuto(dniUsuarioComprando) {
@@ -101,8 +101,7 @@ $(() => {
         let usuarioComprando = usuarioEncontrado(dniUsuarioComprando);
         console.log(usuarioComprando);
         //remuevo el usuarioComprando encontrado por su dni para despues agregar el modificado.
-        let lsSinUsuarioComprando =
-          nuevaListaSinElUsuarioComprando(dniUsuarioComprando);
+        let lsSinUsuarioComprando = nuevaListaSinElUsuarioComprando(dniUsuarioComprando);
         console.log(lsSinUsuarioComprando);
         //le agrego al usuario el auto comprado en su lista de autosComprados
         usuarioComprando.autosComprados.push(objAuto);
@@ -111,20 +110,16 @@ $(() => {
         lsSinUsuarioComprando.push(usuarioComprando);
         console.log(lsSinUsuarioComprando);
         //agrego la lista nueva editada al localStorage reemplazando la anterior.
-        localStorage.setItem(
-          "lsUsuariosRegistrados",
-          JSON.stringify(lsSinUsuarioComprando)
-        );
+        localStorage.setItem("lsUsuariosRegistrados",JSON.stringify(lsSinUsuarioComprando));
         console.log(localStorage.getItem("lsUsuariosRegistrados"));
       }
 
+      
       function datosCoinciden(dniUsuarioComprando) {
         return (
           usuarioEncontrado(dniUsuarioComprando).nombre == nombreIdentificado &&
-          usuarioEncontrado(dniUsuarioComprando).apellido ==
-            apellidoIdentificado &&
-          usuarioEncontrado(dniUsuarioComprando).contraseña ==
-            contraseñaIdentificado
+          usuarioEncontrado(dniUsuarioComprando).apellido == apellidoIdentificado &&
+          usuarioEncontrado(dniUsuarioComprando).contraseña == contraseñaIdentificado
         );
       }
 
@@ -137,9 +132,7 @@ $(() => {
           numValido = true;
           $("#error-numTarjeta").fadeOut(0);
         } else {
-          $(
-            ".error-input"
-          )[0].innerHTML = `<p id="error-numTarjeta">• Solo se aceptan 16 digitos</p>`;
+          $(".error-input")[0].innerHTML = `<p id="error-numTarjeta">• Solo se aceptan 16 digitos</p>`;
           $("#error-numTarjeta").css("color", "red");
           $("#error-numTarjeta").css("margin-left", "44px");
           $("#error-numTarjeta").css("margin-top", "-6px");
@@ -156,9 +149,7 @@ $(() => {
           nomValido = true;
           $("#error-nomTarjeta").fadeOut(0);
         } else {
-          $(
-            ".error-input"
-          )[1].innerHTML = `<p id="error-nomTarjeta">• Solo se aceptan letras</p>`;
+          $(".error-input")[1].innerHTML = `<p id="error-nomTarjeta">• Solo se aceptan letras</p>`;
           $("#error-nomTarjeta").css("color", "red");
           $("#error-nomTarjeta").css("margin-left", "44px");
           $("#error-nomTarjeta").css("margin-top", "-6px");
@@ -177,9 +168,7 @@ $(() => {
           cvcVal = true;
           $("#error-cvcTarjeta").fadeOut(0);
         } else {
-          $(
-            ".error-input"
-          )[2].innerHTML = `<p id="error-cvcTarjeta">• Solo se aceptan 3 digitos</p>`;
+          $( ".error-input")[2].innerHTML = `<p id="error-cvcTarjeta">• Solo se aceptan 3 digitos</p>`;
           $("#error-cvcTarjeta").css("color", "red");
           $("#error-cvcTarjeta").css("margin-left", "44px");
           $("#error-cvcTarjeta").css("margin-top", "-6px");
@@ -198,9 +187,7 @@ $(() => {
           dniVal = true;
           $("#error-dniTarjeta").fadeOut(0);
         } else {
-          $(
-            ".error-input"
-          )[3].innerHTML = `<p id="error-dniTarjeta">• Solo se aceptan 8 digitos</p>`;
+          $(".error-input")[3].innerHTML = `<p id="error-dniTarjeta">• Solo se aceptan 8 digitos</p>`;
           $("#error-dniTarjeta").css("color", "red");
           $("#error-dniTarjeta").css("margin-left", "44px");
           $("#error-dniTarjeta").css("margin-top", "-6px");
@@ -219,19 +206,41 @@ $(() => {
         location.href = "../inicio/autosClassic.html";
       }
 
+      function lsAutosFavoritosSinElAutoRemovido(idAuto){
+        let lsAutosFavoritos = usuarioIdentificado().autosFavoritos;
+        return lsAutosFavoritos.filter((auto) => auto.id !== Number(idAuto))
+      }
+
+      function removerAutoDeFavoritos(idAuto){
+        lsAutosFavoritosSinElAutoRemovido(idAuto)
+        let usuarioLog =  usuarioIdentificado()
+        const lsAutosFavoritosNueva = lsAutosFavoritosSinElAutoRemovido(objAuto.id)
+        usuarioLog.autosFavoritos = lsAutosFavoritosNueva;
+        lsSinElUsuarioViejo(usuarioIdentificado().dni)
+        let lsUsuarioRegistradosNueva = lsSinElUsuarioViejo(usuarioIdentificado().dni);
+        lsUsuarioRegistradosNueva.push(usuarioLog)
+        localStorage.setItem('lsUsuariosRegistrados',JSON.stringify(lsUsuarioRegistradosNueva))
+      }
+
+      function lsSinElUsuarioViejo(dni){
+        return lsUsuariosRegistrados.filter((usuario) => usuario.dni !== dni);
+      }
+
+      function coincideConElUsuarioIdentificado(usuario,nombreIdentificado,apellidoIdentificado,contraseñaIdentificado){
+        return ((usuario.nombre === nombreIdentificado) && (usuario.apellido === apellidoIdentificado)) && (usuario.contraseña === contraseñaIdentificado)
+      }
+    
+      function usuarioIdentificado(){
+        return  lsUsuariosRegistrados.find(usuario => coincideConElUsuarioIdentificado(usuario,nombreIdentificado,apellidoIdentificado,contraseñaIdentificado))
+      }
+
+
       $("#btn-confirmar").click(() => {
-        let autoElegidoPorElUsuario = JSON.parse(
-          localStorage.getItem("autoElegidoPorElUsuario")
-        );
+        let autoElegidoPorElUsuario = JSON.parse(localStorage.getItem("autoElegidoPorElUsuario"));
         lsAutosComprados.push(autoElegidoPorElUsuario);
-        localStorage.setItem(
-          "lsAutosComprados",
-          JSON.stringify(lsAutosComprados)
-        );
+        localStorage.setItem("lsAutosComprados",JSON.stringify(lsAutosComprados));
         if (datosTarjetasValidos()) {
-          $("#articulo").prepend(
-            `<div id="compraExitosa">Compra exitosa! sus compras se guardaran en compras si esta registrado.</div>`
-          );
+          $("#articulo").prepend(`<div id="compraExitosa">Compra exitosa! sus compras se guardaran en compras si esta registrado.</div>`);
           $("#compraExitosa").fadeOut(5000);
           $("#formulario-pago").fadeOut(1000);
           $("#btn-confirmar").remove();
@@ -245,10 +254,9 @@ $(() => {
           localStorage.setItem("seConcretoLaCompra", "si");
           //agrega el auto a la lista de autosComprados del usuario identificado.
           if (
-            sessionStorage.getItem("seIdentifico") === "si" &&
-            datosCoinciden(dniUsuarioComprando)
-          ) {
+            sessionStorage.getItem("seIdentifico") === "si" && datosCoinciden(dniUsuarioComprando)){
             agregarAuto(dniUsuarioComprando);
+            removerAutoDeFavoritos(objAuto.id)
           }
           setTimeout(redireccionar, 4500);
         }

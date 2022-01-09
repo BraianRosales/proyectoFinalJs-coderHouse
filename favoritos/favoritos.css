@@ -1,0 +1,293 @@
+* {
+    margin: 0px auto;
+    padding: 0px auto;
+  }
+  
+  body {
+    width: 100%;
+    background-color: #f9fcff;
+  }
+  
+  .clearfix {
+    clear: both;
+    float: none;
+  }
+  
+  /*-------------------CSS HEADER-----------------*/
+  header {
+    background-color: black;
+    width: 100%;
+    height: 110px;
+    margin: 0px auto;
+    font-family: "Courgette", cursive;
+  }
+  
+  #carrito {
+    color: lemonchiffon;
+    font-size: 50px;
+    right: 130px;
+    top: 25px;
+    position: absolute;
+  }
+  
+  #carrito > span {
+    font-size: 22px;
+    color: yellow;
+  }
+  
+  #btn-carrito {
+    color: white;
+    position: absolute;
+    right: 125px;
+    top: 80px;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  header > h1 {
+    margin-left: 30px;
+    font-size: 50px;
+    padding-top: 20px;
+    text-shadow: 1px 1px 2px black;
+    color: rgb(248, 248, 248);
+  }
+  
+  #icon-autoClasic {
+    color: lemonchiffon;
+    position: absolute;
+    left: 350px;
+    top: 35px;
+    font-size: 40px;
+  }
+
+  carrito {
+    color: lemonchiffon;
+    font-size: 50px;
+    right: 130px;
+    top: 25px;
+    position: absolute;
+  }
+  
+  #carrito > span{
+    font-size: 22px;
+    color: yellow;
+  }
+  
+  #btn-carrito{
+    color: white;
+    position: absolute;
+    right: 140px;
+    top: 80px;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 200ms;
+  }
+  
+  #btn-carrito:hover{
+    color: gold;
+    transform: scale(1.0,1.1);
+  }
+  
+  /*-------------------CSS NAV--------------------*/
+  
+  nav > ul {
+    text-align: center;
+    background-color: #daf0fd;
+  }
+  
+   nav > ul > li {
+    display: inline-block;
+    margin: 10px;
+    font-size: 25px;
+    cursor: pointer;
+    font:bold;
+    font-family: 'Shippori Antique', sans-serif;
+    margin-left: 30px;
+    margin-top: 13px;
+    transition: all 200ms;
+  }
+  
+  nav > ul > li:hover{
+    transform: scale(1.2,1.2);
+  }
+  
+  nav > ul > li > a{
+    color: black;
+    text-decoration: none;
+  }
+  
+  nav > ul > li:nth-child(4) > a{
+    color: rgb(214, 195, 24);
+    text-shadow: 1px 2px 5px black;
+    font-size: 25px;
+  }
+
+  
+  nav > ul > li > a:hover{
+    color: rgb(214, 195, 24);
+    text-shadow: 1px 2px 5px black;
+  }
+  
+  /*----------------------CSS CARRUSEL-------------------*/
+  #carrusel {
+    width: 65%;
+    height: 425px;
+    margin-top: 60px;
+    margin-bottom:96px;
+  }
+  
+  .bx-wrapper, .bx-viewport{
+    max-width: 1111px!important;
+    height: 404px!important;
+  }
+  
+  .bx-wrapper img {
+    max-width: 101%;
+    height: 404px;
+    display: block;
+  }
+  
+  #alert {
+    min-height: 0px;
+    background-color: #f9fcff;
+    width: 90%;
+    margin-top: 40px;
+    margin-bottom: -10px;
+    border-radius: 5px;
+  }
+  
+  #contenidoPrincipal {
+    width: 90%;
+  }
+  
+
+
+/*----------------------CSS ARTICULOS-------------------*/
+
+  article {
+    background-color: white;
+    width: 23%;
+    float: left;
+    min-height: 366px;
+    margin-left: 20px;
+    border: 1px solid rgb(216, 216, 216);
+    transition: all 200ms;
+    margin-top: 37px;
+    cursor: pointer;
+  }
+
+  article:hover{
+    
+    box-shadow:1px 1px 10px 1px rgb(39, 39, 39);
+  }
+
+  article > img {
+    width: 100%;
+    height: 216px;
+  }
+
+  article > ul > li >span:last-child{
+    color: rgba(54, 221, 3, 0.993);
+    font-size: 17px;
+  }
+
+  .autoComprado{
+    background-color: lemonchiffon;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 22px;
+    cursor: pointer;
+  }
+  
+  .ul {
+    margin-left: -27px;
+    line-height: 15px;
+    list-style: none;
+    margin-bottom: 12px;
+    margin-top: 15px;
+  }
+
+  
+.ul > li{
+  width: 100%;
+  color: black;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  padding-top: 5px;
+}
+
+.precio {
+  background-color: lemonchiffon;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  font-size: 22px;
+}
+
+.precio:hover{
+  background-color: rgb(255, 241, 161);
+  box-shadow:1px 1px 8px 1px rgb(255, 241, 161);
+}
+
+#alert {
+  min-height: 0px;
+  background-color: #f9fcff;
+  width: 90%;
+  margin-top: 40px;
+  margin-bottom: -10px;
+  border-radius: 5px;
+}
+
+article > h2 {
+  background-color: #ff8f00;
+  text-align: center;
+  color: whitesmoke;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  min-height: 45px;
+  line-height: 45px;
+}
+
+#articulos > p {
+  text-align: center;
+  font-size: 25px;
+  line-height: 200px;
+  color: red;
+}
+
+
+#articulos {
+  float: left;
+  width: 60%;
+  background-color: #f9fcff;
+  margin-bottom: 15px;
+  padding-top: 0px;
+  padding-bottom: 20px;
+  border-radius: 5px;
+  margin-left: 21%;
+}
+
+#titulo{
+  font-size: 27px!important;
+  margin-top: 44px!important;
+  font-family: 'Courgette'!important;
+  color: goldenrod!important;
+  text-align: justify!important;
+  line-height: 0px!important;
+}
+
+.btn-remover{
+  float: right;
+  color: red;
+  margin-right: 5px;
+  padding: 3px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.btn-remover:hover{
+  background-color: rgb(255, 208, 208)!important;
+}

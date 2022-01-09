@@ -17,7 +17,6 @@ $(() => {
     let articulos = $("#articulos");
     const nombreMayuscula = (usuarioIdentificado().nombre).charAt(0).toUpperCase() + (usuarioIdentificado().nombre).slice(1);
     const apellidoMayuscula = (usuarioIdentificado().apellido).charAt(0).toUpperCase() + (usuarioIdentificado().apellido).slice(1);
-    console.log(typeof(usuarioIdentificado().autosComprados.length))
     if(usuarioIdentificado().autosComprados.length === 0){
       articulos[0].innerHTML = `<p id="titulo">${nombreMayuscula} ${apellidoMayuscula} todavia no compraste ningun auto classic.</p>`
     }else{
@@ -47,5 +46,6 @@ $(() => {
     let articulos = $("#articulos");
     articulos[0].innerHTML += `<p>Usuario no identificado, debe identificarse para ver su historial de compras.</p>`
   }
+  //termina el ready
 });
 

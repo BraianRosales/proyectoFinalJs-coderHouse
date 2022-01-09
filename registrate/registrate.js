@@ -24,19 +24,18 @@ $(()=>{
       this.contraseña = contraseña;
       this.dni = Number(dni);
       this.autosComprados = [];
+      this.autosFavoritos = [];
     }
   }
   
-  const todosLosCamposSonValidos = () => {
+  function todosLosCamposSonValidos() {
     let testNombre = nombre[0].value;
     let testApellido = apellido[0].value;
     let testContraseña = contraseña[0].value;
     let testEmail = eMail[0].value;
     let testDni = dni[0].value;
     let testConfirmarContraseña = confirmarContraseña[0].value;
-    return (
-      (testNombre.length /= 0) && (testApellido.length /= 0) &&(testContraseña.length /= 0) &&(testEmail.length /= 0) &&(testConfirmarContraseña.length /= 0) && testContraseña == testConfirmarContraseña && (testDni.length /= 0)
-    );
+    return ((testNombre.length /= 0) && (testApellido.length /= 0) &&(testContraseña.length /= 0) &&(testEmail.length /= 0) &&(testConfirmarContraseña.length /= 0) && testContraseña == testConfirmarContraseña && (testDni.length /= 0));
   };
 
   btnRegistrar.on("click", handleRegistrar);
@@ -57,13 +56,13 @@ $(()=>{
       localStorage.setItem("lsUsuariosRegistrados",lsUsuariosRegistradosString);
       $("#alert").html(`Usuario registrado!`);
       $("#alert").css("color","limegreen");
+      
       setTimeout(redireccionar,1000);
     } else {
-      $("#alert").html(
-        `Usuario no registrado.Verfique que ningun campo este vacio y que las contraseñas coincidan.`
-      );
+      $("#alert").html(`Usuario no registrado.Verfique que ningun campo este vacio y que las contraseñas coincidan.`);
       $("#alert").css("color", "red");
     }
-  }   
+  } 
+  //termina el ready.  
 })
 

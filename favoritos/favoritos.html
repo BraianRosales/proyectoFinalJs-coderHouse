@@ -3,25 +3,24 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Compras</title>
+    <title>Favoritos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="compras.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="favoritos.css" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Courgette&family=Permanent+Marker&display=swap");
     </style>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Fjalla+One&family=Lobster&family=Shippori+Antique&display=swap");
     </style>
-    <script
-      src="https://kit.fontawesome.com/76088dd324.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/76088dd324.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <header>
-      <h1 id="nombre-proyecto ">Autos Classic</h1>
-      <i class="fas fa-car" id="icon-autoClasic"></i>
-    </header>
+      <header>
+        <h1 id="nombre-proyecto ">Autos Classic</h1>
+        <i class="fas fa-car" id="icon-autoClasic"></i>
+        <i class="fas fa-shopping-cart" id="carrito"><span></span></i>
+        <a href="../carrito/carrito.html" id="btn-carrito">Carrito</a>
+      </header>
     <nav>
       <ul>
         <li><a href="../inicio/autosClassic.html">Inicio</a></li>
@@ -30,8 +29,11 @@
         <li><a href="../favoritos/favoritos.html">Favoritos</a></li>
       </ul>
     </nav>
+     <!-- alerta -->
+     <div id="alert"></div>
+     <!-- arcticulos favoritos -->
     <section id="articulos" class="caja"></section>
   </body>
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-  <script src="compras.js"></script>
+  <script src="favoritos.js"></script>
 </html>

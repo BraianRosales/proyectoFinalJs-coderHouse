@@ -222,6 +222,22 @@ article > h2 {
   line-height: 45px;
 }
 
+.estrella{
+  color: rgb(214, 214, 166);
+  float: right;
+  margin-right: 7px;
+}
+
+.estrella:hover{
+  color: gold;
+}
+
+.estrella-brillante{
+  color: gold!important;
+  float: right!important;
+  margin-right: 7px!important;
+}
+
 /*-------------------------CSS ASIDE----------------------------*/
 
 aside {

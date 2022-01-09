@@ -39,6 +39,7 @@ $(()=>{
   const chevroletCorvetteTTop = new AutoClassic(10,"Chevrolet","corvette Coupe T-Top","Black",2,71.000,"Nafta",1981,"U$S 55000",55000,"img-autos/chevrolet-corvette-coupe-T-Top.jpg");
   const fordMustang289Convertible = new AutoClassic(11,"Ford","mustaing 289","Red",2,85.995,"Nafta",1968,"U$S 120000",120000,"img-autos/ford-Mustang289.jpg");
   lsAutosClassic.push(mgMidget1500,mercedesBenz280Sl,acCobra,porsche911ScCabrioEU,fordA,subaru360,chevroletCamaroZ28,mercedesBenz560SL,jaguarEType,porsche928S,chevroletCorvetteTTop,fordMustang289Convertible);
+  localStorage.setItem('lsAutosClassic', JSON.stringify(lsAutosClassic))
   let precioGuardado;
   let alerta = $('#alert');
   const InputNombre = $('#nombre')
@@ -50,6 +51,11 @@ $(()=>{
   let precioAuto;
   let lsUsuariosRegistrados;
   let textoElemento = document.getElementById("btn-leerMas").textContent;
+  const seIdentifico = sessionStorage.getItem("seIdentifico")
+  const apellidoIdentificado = localStorage.getItem("apellidoIdentificado")
+  const nombreIdentificado = localStorage.getItem("nombreIdentificado")
+  const contraseñaIdentificado = localStorage.getItem("contraseñaIdentificado")
+  
   
   nroCarrito = localStorage.getItem("numeroCarrito");
   $("#carrito")[0].innerHTML = `<span>${nroCarrito}</span>`;
@@ -58,12 +64,13 @@ $(()=>{
     $("#carrito")[0].innerHTML = `<span>${0}</span>`;
   }
 
-  //agrega propiedades a los articulos en venta de la pagina.
+  //Agrega propiedades a los articulos en venta de la pagina.
     for (const auto of lsAutosClassic) {
       let articulos = $("#articulos");
       articulos[0].innerHTML += `
-      <article class="articleId">
+      <article class="article">
       <img src=${auto.img}>
+      <i class="fas fa-star estrella" id="${auto.id}"></i>
           <ul class="ul">
               <li> marca: ${auto.marca}. </li>
               <li> nombre: ${auto.modelo}. </li>
@@ -74,16 +81,14 @@ $(()=>{
               <li> año: ${auto.año}. </li>
           </ul>
           <div class="precio" id="${auto.id}">${auto.precioEnString}</div>
-      </article>`;
-      
+      </article>`; 
   };
 
   function redireccionar(){
     location.href = "../carrito/carrito.html"
   }
-   
-  //al hacer click sobre un precio de los autos manda el articulo del auto seleccionado a la seccion del carrito para concretar la compra.
-  $(".precio").on("click", (e) => {
+  
+  function clickPrecio(e) { 
     const idPrecio = Number(e.target.id);
     localStorage.setItem("precioClickeado", e.target.textContent);
     precioGuardado = localStorage.getItem("precioClickeado");
@@ -93,9 +98,14 @@ $(()=>{
     localStorage.setItem("precioTotal", precioAuto);
     localStorage.setItem("numeroCarrito", "1");
     $("#carrito")[0].innerHTML = `<span>${localStorage.getItem("numeroCarrito")}</span>`;
-    $('html, body').animate({scrollTop:1}, 'slow'); //seleccionamos etiquetas,clase o identificador destino, creamos animación hacia top de la página
+    $('html, body').animate({scrollTop:1}, 'slow'); //crea una animación hacia top de la página.
     alerta.fadeOut(4500);
     setTimeout(redireccionar,4000);
+  }
+
+  //al hacer click sobre un precio de los autos manda el articulo del auto seleccionado a la seccion del carrito para concretar la compra.
+  $(".precio").click((e)=>{
+    clickPrecio(e)
   });
 
   function siEsUsuarioRegistradoSeAplicaElDescuento (){
@@ -229,15 +239,10 @@ $(()=>{
       return idesAutosComprados().includes(auto.id)
  }
 
-
- for (let index = 0; index < lsAutosComprados.length; index++) {
-   const element = lsAutosComprados[index];
-
- }
-
+//Cambia el precio del auto a "Auto comprado" si es un auto que ya fue comprado por algun usuario.
   for (const auto of lsAutosClassic) {
     if (autoEstaComprado(auto)) {
-    let article = $('.articleId')
+    let article = $('.article')
     article[auto.id].innerHTML = `
     <img src=${auto.img}>
     <ul class="ul">
@@ -253,4 +258,140 @@ $(()=>{
     `
     }
   }
+
+  function cambiaDeColorEstrellita(idEstrella){
+    $(`#${idEstrella}`).css("color","gold")
+  }
+
+  function usuarioEncontrado(usuario,nombre,apellido,contraseña){
+    return usuario.nombre === nombre &&
+           usuario.apellido === apellido &&
+           usuario.contraseña === contraseña
+  }
+ 
+  
+  function autoFavorito(idAuto){
+    return lsAutosClassic.find(auto => auto.id == idAuto)
+  }
+
+  function usuarioLogeado(){
+     const nombre = localStorage.getItem('nombreIdentificado')
+     const apellido = localStorage.getItem('apellidoIdentificado')
+     const  contraseña = localStorage.getItem('contraseñaIdentificado')
+     let usuarioLogeado;
+       if (esUsuarioRegistrado() && sessionStorage.getItem("seIdentifico") == "si"){
+         lsUsuariosRegistrados = JSON.parse(localStorage.getItem("lsUsuariosRegistrados"));
+         usuarioLogeado = lsUsuariosRegistrados.find(usuario => usuarioEncontrado(usuario,nombre,apellido,contraseña))
+       }
+     return usuarioLogeado;
+   }
+ 
+   let usuarioLog = usuarioLogeado();
+
+  function lsSinElUsuarioViejo(dni){
+    return lsUsuariosRegistrados.filter((usuario) => usuario.dni !== dni);
+  }
+
+   //Modifique la lsDeUsuariosRegistrados pusheando un nuevo auto a los autos favoritos del usuario logeado y cuando la lista quedo modificada, la guarde pisandola en el local storage.
+   $('.estrella').click((e)=>{
+    cambiaDeColorEstrellita(e.target.id);
+    autoFavorito(e.target.id);
+    let lsAutosFavoritos = usuarioLog.autosFavoritos
+    lsAutosFavoritos.push(autoFavorito(e.target.id))
+    usuarioLog.autosFavoritos = lsAutosFavoritos;
+    lsSinElUsuarioViejo(usuarioLogeado().dni)
+    let lsUsuarioRegistradosNueva = lsSinElUsuarioViejo(usuarioLogeado().dni);
+    lsUsuarioRegistradosNueva.push(usuarioLog)
+    localStorage.setItem('lsUsuariosRegistrados',JSON.stringify(lsUsuarioRegistradosNueva))
+    location.reload()
+  })
+
+  function idsAutosFavoritosDelUsuarioLogeado(){
+    return (usuarioLogeado().autosFavoritos).map((auto) => auto.id)
+  }
+
+  function esUnAutoFavorito(auto){
+      return idsAutosFavoritosDelUsuarioLogeado().includes(auto.id)
+  }
+  
+  //Agrega una estrellita brillante a los autos que estan dentro de la pagina de favoritos.
+    for (const auto of lsAutosClassic) {
+      if (esUnAutoFavorito(auto)) {
+      let article = $('.article')
+      article[auto.id].innerHTML = `
+      <img src=${auto.img}>
+      <i class="fas fa-star estrella-brillante" id="${auto.id}"></i>
+      <ul class="ul">
+          <li> marca: ${auto.marca}. </li>
+          <li> nombre: ${auto.modelo}. </li>
+          <li> color: ${auto.color}. </li>
+          <li> cantidad de puertas: ${auto.cantPuertas}. </li>
+          <li> kilometraje: ${auto.kilometraje} km. </li>
+          <li> combustible: ${auto.combustible}. </li>
+          <li> año: ${auto.año}. </li>
+      </ul>
+      <div class="precio" id="${auto.id}">En favoritos</div>
+      `
+      }
+    }
+
+    $(".precio").click((e)=>{
+      clickPrecio(e)
+    })
+
+    function autoConId(idAuto){
+      return lsAutosClassic.find(auto => auto.id == idAuto)
+    }
+    function coincideConElUsuarioIdentificado(usuario,nombreIdentificado,apellidoIdentificado,contraseñaIdentificado){
+      return ((usuario.nombre === nombreIdentificado) && (usuario.apellido === apellidoIdentificado)) && (usuario.contraseña === contraseñaIdentificado)
+    }
+  
+    function usuarioIdentificado(){
+      return  lsUsuariosRegistrados.find(usuario => coincideConElUsuarioIdentificado(usuario,nombreIdentificado,apellidoIdentificado,contraseñaIdentificado))
+    }
+
+    let lsAutosFavoritos = usuarioIdentificado().autosFavoritos;
+
+    function lsAutosFavoritosSinElAutoRemovido(idClick){
+      return lsAutosFavoritos.filter((auto) => auto.id !== Number(idClick))
+    }
+
+    function lsSinElUsuarioViejo(dni){
+      return lsUsuariosRegistrados.filter((usuario) => usuario.dni !== dni);
+    }
+
+    function removerAutoDeFavoritos(idClick){
+      let usuarioLog =  usuarioIdentificado();
+      lsAutosFavoritosSinElAutoRemovido(idClick);
+      const lsAutosFavoritosNueva = lsAutosFavoritosSinElAutoRemovido(idClick);
+      usuarioLog.autosFavoritos = lsAutosFavoritosNueva;
+      lsSinElUsuarioViejo(usuarioIdentificado().dni);
+      let lsUsuarioRegistradosNueva = lsSinElUsuarioViejo(usuarioIdentificado().dni);
+      lsUsuarioRegistradosNueva.push(usuarioLog);
+      localStorage.setItem('lsUsuariosRegistrados',JSON.stringify(lsUsuarioRegistradosNueva))
+      location.reload()
+    }
+
+    $('.estrella-brillante').click((e) =>{ 
+      removerAutoDeFavoritos(e.target.id)
+      const auto = autoConId(e.target.id)
+      let article = $('.article')
+      article[auto.id].innerHTML = `
+      <img src=${auto.img}>
+      <i class="fas fa-star estrella" id="${auto.id}"></i>
+      <ul class="ul">
+          <li> marca: ${auto.marca}. </li>
+          <li> nombre: ${auto.modelo}. </li>
+          <li> color: ${auto.color}. </li>
+          <li> cantidad de puertas: ${auto.cantPuertas}. </li>
+          <li> kilometraje: ${auto.kilometraje} km. </li>
+          <li> combustible: ${auto.combustible}. </li>
+          <li> año: ${auto.año}. </li>
+      </ul>
+      <div class="precio" id="${auto.id}">${auto.precioEnString}</div>
+      `
+    });
+
+
+
 })

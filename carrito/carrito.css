@@ -94,6 +94,17 @@ nav > ul > li > a:hover {
   text-shadow: 1px 2px 5px black;
 }
 
+/*-------------------NOTA--------------------*/
+
+#nota{
+  position: absolute;
+  right: 285px;
+  top: 249px;
+  max-width: 139px;
+  border-radius: 3px;
+  background-image: url(/carrito/nota.jpg);
+}
+
 /*-------------------ARTICLE--------------------*/
 article {
   display: block;
