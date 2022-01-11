@@ -46,6 +46,5 @@ $(() => {
     let articulos = $("#articulos");
     articulos[0].innerHTML += `<p>Usuario no identificado, debe identificarse para ver su historial de compras.</p>`
   }
-  //termina el ready
 });
 

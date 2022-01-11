@@ -9,9 +9,8 @@ $(()=>{
   let btnRegistrar = $("#button");
   let divAlert = $("#alert");
   let lsUsuariosRegistrados;
-  
-  // si lsUsuariosRegistrado es null lsUsuariosRegistrado inicializa vacia sino le agrega la lista ya obtenida. ALGORITMO IMPORTANTE.
-  if (localStorage.getItem("lsUsuariosRegistrados") == null) {
+
+ if (localStorage.getItem("lsUsuariosRegistrados") == null) {
     lsUsuariosRegistrados = [];
   } else {
     lsUsuariosRegistrados = JSON.parse(localStorage.getItem("lsUsuariosRegistrados"));
@@ -62,7 +61,6 @@ $(()=>{
       $("#alert").html(`Usuario no registrado.Verfique que ningun campo este vacio y que las contraseñas coincidan.`);
       $("#alert").css("color", "red");
     }
-  } 
-  //termina el ready.  
+  }  
 })
 

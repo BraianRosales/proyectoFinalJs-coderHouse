@@ -10,7 +10,7 @@ $(() => {
   let contraseñaIdentificado = localStorage.getItem("contraseñaIdentificado");
   let lsAutosComprados;
 
-  //ALGORITMO IMPORTANTE PARA IR PUSHEANDO LOS AUTOS COMPRADOS.
+
   if (localStorage.getItem("lsAutosComprados") == null) {
     lsAutosComprados = [];
   } else {
@@ -99,16 +99,12 @@ $(() => {
       function agregarAuto(dniUsuarioComprando) {
         //encontrar el usuario que realiza la compra.
         let usuarioComprando = usuarioEncontrado(dniUsuarioComprando);
-        console.log(usuarioComprando);
         //remuevo el usuarioComprando encontrado por su dni para despues agregar el modificado.
         let lsSinUsuarioComprando = nuevaListaSinElUsuarioComprando(dniUsuarioComprando);
-        console.log(lsSinUsuarioComprando);
         //le agrego al usuario el auto comprado en su lista de autosComprados
         usuarioComprando.autosComprados.push(objAuto);
-        console.log(usuarioComprando);
         //agrego a la nueva lista sin el usuario comprado el nuevo usuarioCreado agregandole el auto comprado.
         lsSinUsuarioComprando.push(usuarioComprando);
-        console.log(lsSinUsuarioComprando);
         //agrego la lista nueva editada al localStorage reemplazando la anterior.
         localStorage.setItem("lsUsuariosRegistrados",JSON.stringify(lsSinUsuarioComprando));
         console.log(localStorage.getItem("lsUsuariosRegistrados"));
@@ -263,5 +259,4 @@ $(() => {
       });
     });
   }
-  //termina el ready.
 });

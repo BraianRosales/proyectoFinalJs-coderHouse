@@ -103,7 +103,7 @@ $(()=>{
     setTimeout(redireccionar,4000);
   }
 
-  //al hacer click sobre un precio de los autos manda el articulo del auto seleccionado a la seccion del carrito para concretar la compra.
+  //Al hacer click sobre un precio de los autos manda el articulo del auto seleccionado a la seccion del carrito para concretar la compra.
   $(".precio").click((e)=>{
     clickPrecio(e)
   });
@@ -391,7 +391,4 @@ $(()=>{
       <div class="precio" id="${auto.id}">${auto.precioEnString}</div>
       `
     });
-
-
-
 })

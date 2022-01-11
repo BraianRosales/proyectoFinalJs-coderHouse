@@ -30,12 +30,12 @@ header {
   position: absolute;
 }
 
-#carrito > span{
+#carrito > span {
   font-size: 22px;
   color: yellow;
 }
 
-#btn-carrito{
+#btn-carrito {
   color: white;
   position: absolute;
   right: 140px;
@@ -46,9 +46,9 @@ header {
   transition: all 200ms;
 }
 
-#btn-carrito:hover{
+#btn-carrito:hover {
   color: gold;
-  transform: scale(1.0,1.1);
+  transform: scale(1, 1.1);
 }
 
 header > h1 {
@@ -59,11 +59,11 @@ header > h1 {
   color: rgb(248, 248, 248);
 }
 
-#icon-autoClasic{
+#icon-autoClasic {
   color: lemonchiffon;
   position: absolute;
   left: 350px;
-  top:35px;
+  top: 35px;
   font-size: 40px;
 }
 
@@ -74,34 +74,34 @@ nav > ul {
   background-color: #daf0fd;
 }
 
- nav > ul > li {
+nav > ul > li {
   display: inline-block;
   margin: 10px;
   font-size: 25px;
   cursor: pointer;
-  font:bold;
-  font-family: 'Shippori Antique', sans-serif;
+  font: bold;
+  font-family: "Shippori Antique", sans-serif;
   margin-left: 30px;
   margin-top: 13px;
   transition: all 200ms;
 }
 
-nav > ul > li:hover{
-  transform: scale(1.2,1.2);
+nav > ul > li:hover {
+  transform: scale(1.2, 1.2);
 }
 
-nav > ul > li > a{
+nav > ul > li > a {
   color: black;
   text-decoration: none;
 }
 
-nav > ul > li:first-child > a{
+nav > ul > li:first-child > a {
   color: rgb(214, 195, 24);
   text-shadow: 1px 2px 5px black;
   font-size: 25px;
 }
 
-nav > ul > li > a:hover{
+nav > ul > li > a:hover {
   color: rgb(214, 195, 24);
   text-shadow: 1px 2px 5px black;
 }
@@ -111,12 +111,13 @@ nav > ul > li > a:hover{
   width: 65%;
   height: 425px;
   margin-top: 60px;
-  margin-bottom:96px;
+  margin-bottom: 96px;
 }
 
-.bx-wrapper, .bx-viewport{
-  max-width: 1111px!important;
-  height: 404px!important;
+.bx-wrapper,
+.bx-viewport {
+  max-width: 1111px !important;
+  height: 404px !important;
 }
 
 .bx-wrapper img {
@@ -162,7 +163,7 @@ article {
   cursor: pointer;
 }
 
-.autoComprado{
+.autoComprado {
   background-color: lemonchiffon;
   height: 30px;
   text-align: center;
@@ -171,9 +172,9 @@ article {
   cursor: pointer;
 }
 
-article:hover{
-  transform: scale(1.1,1.1);
-  box-shadow:1px 1px 10px 1px rgb(39, 39, 39);
+article:hover {
+  transform: scale(1.1, 1.1);
+  box-shadow: 1px 1px 10px 1px rgb(39, 39, 39);
 }
 
 article > img {
@@ -188,15 +189,13 @@ article > img {
   margin-bottom: 12px;
 }
 
-
-.ul > li{
+.ul > li {
   width: 100%;
   color: black;
   font-size: 16px;
   font-family: Arial, sans-serif;
   padding-top: 5px;
 }
-
 
 .precio {
   background-color: lemonchiffon;
@@ -207,9 +206,9 @@ article > img {
   cursor: pointer;
 }
 
-.precio:hover{
+.precio:hover {
   background-color: rgb(255, 241, 161);
-  box-shadow:1px 1px 8px 1px rgb(255, 241, 161);
+  box-shadow: 1px 1px 8px 1px rgb(255, 241, 161);
 }
 
 article > h2 {
@@ -222,20 +221,20 @@ article > h2 {
   line-height: 45px;
 }
 
-.estrella{
+.estrella {
   color: rgb(214, 214, 166);
   float: right;
   margin-right: 7px;
 }
 
-.estrella:hover{
+.estrella:hover {
   color: gold;
 }
 
-.estrella-brillante{
-  color: gold!important;
-  float: right!important;
-  margin-right: 7px!important;
+.estrella-brillante {
+  color: gold !important;
+  float: right !important;
+  margin-right: 7px !important;
 }
 
 /*-------------------------CSS ASIDE----------------------------*/
@@ -256,7 +255,7 @@ img {
 #titulosAside {
   text-align: center;
   color: black;
-  font-family: 'Shippori Antique', sans-serif;
+  font-family: "Shippori Antique", sans-serif;
   margin: 0px auto;
   font-size: 20px;
   padding: 15px;
@@ -285,7 +284,7 @@ aside > #quienSoy > p {
   padding: 10px;
 }
 
-#p-bienvenido{
+#p-bienvenido {
   text-align: center;
   margin-right: 7px;
   margin-top: 12px;
@@ -304,7 +303,8 @@ label {
   color: black;
 }
 
-input[type="text"],input[type="password"] {
+input[type="text"],
+input[type="password"] {
   margin: 10px;
   width: 60%;
   margin-left: -1px;
@@ -323,12 +323,12 @@ input[type="button"] {
   border-radius: 5px;
   background-color: rgb(243, 239, 239);
   border: 1px solid rgb(175, 175, 175);
-  margin-top: 8px!important;
+  margin-top: 8px !important;
 }
 
-input[type="button"]:hover{
+input[type="button"]:hover {
   background-color: rgb(59, 59, 59);
-  color: goldenrod
+  color: goldenrod;
 }
 
 form {
@@ -346,28 +346,28 @@ form {
   font-size: 19px;
 }
 
-a{
+a {
   color: rgb(156, 148, 76);
   text-decoration: none;
 }
 
-a:hover{
+a:hover {
   text-decoration: none;
   color: goldenrod;
   text-shadow: 1px 1px 7px rgb(255, 255, 165);
 }
 
-#presentacion{
+#presentacion {
   font-size: 18px;
   margin: 7px;
 }
 
-#presentacion-inicial{
+#presentacion-inicial {
   font-size: 18px;
   margin: 7px;
 }
 
-#btn-leerMas{
+#btn-leerMas {
   margin-left: 10px;
   cursor: pointer;
   margin-bottom: 2px;
@@ -377,9 +377,9 @@ a:hover{
   transition: all 200ms;
 }
 
-#btn-leerMas:hover{
+#btn-leerMas:hover {
   color: gold;
-  transform: scale(1.0,1.1);
+  transform: scale(1, 1.1);
 }
 
 /*--------------------------CSS FOOTER-----------------------------------*/
@@ -395,161 +395,183 @@ footer {
   margin-top: 30px;
 }
 
-
 /* ------------Aca comienza el responsive con mediaquery -------------- */
 
-/* Responsive para iPad */
-@media(max-width: 1825px) {
-    #articulos{
-        width: 100%;
-    }
+@media (max-width: 1825px) {
+  #articulos {
+    width: 100%;
+  }
 
-    #articulos article{
-      width: 30%;
-    }
-    #articulos article ul li{
-        font-size: 13px;
-      }
-    aside{
-        width: 100%;
-    }
-    #quienSoy > img{
-        width: 80%;
-        margin-left: 72px;
-        border-radius: 5px;
-    }
+  #articulos article {
+    width: 30%;
+  }
+  #articulos article ul li {
+    font-size: 13px;
+  }
+  aside {
+    width: 100%;
+  }
+  #quienSoy > img {
+    width: 80%;
+    margin-left: 72px;
+    border-radius: 5px;
+  }
 }
 
-@media(max-width: 751px) {
-    header > h1{
-      font-size: 30px;
-      margin-left: 10px;
-    }
-    #icon-autoClasic{
-      color: lemonchiffon;
-      position: absolute;
-      left: 200px;
-      top:25px;
-      font-size: 30px;
-    }
-    #nombre-proyecto{
-        font-size: 30px;
-    }
-    #articulos{
-        width: 90%;
-    }
+@media (max-width: 751px) {
+  header > h1 {
+    font-size: 30px;
+    margin-left: 10px;
+  }
+  #icon-autoClasic {
+    color: lemonchiffon;
+    position: absolute;
+    left: 200px;
+    top: 25px;
+    font-size: 30px;
+  }
+  #nombre-proyecto {
+    font-size: 30px;
+  }
+  #articulos {
+    width: 90%;
+  }
 
-    #articulos article{
-      width: 85%;
-
-    }
-    #articulos article > p{
-        font-size: 13px;
-      }
-    aside{
-        width: 100%;
-    }
-    #quienSoy > img{
-        width: 80%;
-        margin-left: 72px;
-        border-radius: 5px;
-    }
-    #carrito{
-        right: 40px;
-        min-height: 70px;
-    }
-    nav > ul{
-        text-align: unset;
-    }
-    nav > ul > li{
-        margin-left: 0px;
-        margin-right: 23px
-    }
-    #quienSoy > img{
-        width: 80%;
-        margin-left: 35px;
-        border-radius: 5px;
-    }
-    input[type="button"]{
-        width: 60%;
-    }
-    footer{
-        font-size: 20px;
-        min-height: 45px;
-        line-height: 25px;
-    }
-    #alert{
-        min-height: 40px;
-    }
-    #alert >p{
-        font-size: 15px;
-        line-height: 20px
-    }
+  #articulos article {
+    width: 85%;
+  }
+  #articulos article > p {
+    font-size: 13px;
+  }
+  aside {
+    width: 100%;
+  }
+  #quienSoy > img {
+    width: 80%;
+    margin-left: 72px;
+    border-radius: 5px;
+  }
+  #carrito {
+    right: 40px;
+    min-height: 70px;
+  }
+  nav > ul {
+    text-align: unset;
+  }
+  nav > ul > li {
+    margin-left: 0px;
+    margin-right: 23px;
+  }
+  #quienSoy > img {
+    width: 80%;
+    margin-left: 35px;
+    border-radius: 5px;
+  }
+  input[type="button"] {
+    width: 60%;
+  }
+  footer {
+    font-size: 20px;
+    min-height: 45px;
+    line-height: 25px;
+  }
+  #alert {
+    min-height: 40px;
+  }
+  #alert > p {
+    font-size: 15px;
+    line-height: 20px;
+  }
 }
 
-@media(max-width: 375px) {
-  header > h1{
-      font-size: 30px;
-      margin-left: 10px;
-    }
-    #icon-autoClasic{
-      color: lemonchiffon;
-      position: absolute;
-      left: 200px;
-      top:25px;
-      font-size: 30px;
-    }
-    #nombre-proyecto{
-        font-size: 30px;
-    }
-    #articulos{
-        width: 90%;
-    }
+@media (max-width: 540px) {
+  #btn-carrito {
+    margin-right: -90px;
+  }
+}
 
-    #articulos article{
-      width: 85%;
+@media (max-width: 375px) {
+  header > h1 {
+    font-size: 30px;
+    margin-left: 10px;
+  }
+  #icon-autoClasic {
+    color: lemonchiffon;
+    position: absolute;
+    left: 200px;
+    top: 25px;
+    font-size: 30px;
+  }
+  #nombre-proyecto {
+    font-size: 30px;
+  }
+  #articulos {
+    width: 90%;
+  }
 
-    }
-    #articulos article > p{
-        font-size: 13px;
-      }
-    aside{
-        width: 100%;
-    }
-    #quienSoy > img{
-        width: 80%;
-        margin-left: 72px;
-        border-radius: 5px;
-    }
-    #carrito{
-        right: 40px;
-        min-height: 70px;
-    }
-    nav > ul{
-        text-align: unset;
-    }
-    nav > ul > li{
-        margin-left: 0px;
-        margin-right: 23px
-    }
-    #quienSoy > img{
-        width: 80%;
-        margin-left: 35px;
-        border-radius: 5px;
-    }
-    input[type="button"]{
-        width: 60%;
-    }
-    footer{
-        font-size: 15px;
-        min-height: 40px;
-        line-height: 25px;
-    }
-    #alert{
-        min-height: 40px;
-    }
-    #alert >p{
-        font-size: 15px;
-        line-height: 20px
-    }
+  #articulos article {
+    width: 85%;
+  }
+  #articulos article > p {
+    font-size: 13px;
+  }
+  aside {
+    width: 100%;
+  }
+  #quienSoy > img {
+    width: 80%;
+    margin-left: 72px;
+    border-radius: 5px;
+  }
+  #carrito {
+    right: 40px;
+    min-height: 70px;
+  }
+  nav > ul {
+    text-align: unset;
+  }
+  nav > ul > li {
+    margin-left: 0px;
+    margin-right: 23px;
+  }
+  #quienSoy > img {
+    width: 80%;
+    margin-left: 35px;
+    border-radius: 5px;
+  }
+  input[type="button"] {
+    width: 60%;
+  }
+  footer {
+    font-size: 15px;
+    min-height: 40px;
+    line-height: 25px;
+  }
+  #alert {
+    min-height: 40px;
+  }
+  #alert > p {
+    font-size: 15px;
+    line-height: 20px;
+  }
+  #btn-carrito {
+    margin-right: -90px;
+  }
+}
+
+@media (max-width: 414px) {
+  #btn-carrito {
+    margin-right: -90px;
+  }
+}
+
+@media (max-width: 280px) {
+  #carrito {
+    font-size: 20px;
+    margin-top: 30px;
+    right: 10px;
+  }
+  #btn-carrito {
+    margin-right: -133px;
+  }
 }

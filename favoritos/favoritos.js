@@ -153,7 +153,7 @@ $(()=>{
         localStorage.setItem("precioTotal", precioAuto);
         localStorage.setItem("numeroCarrito", "1");
         $("#carrito")[0].innerHTML = `<span>${localStorage.getItem("numeroCarrito")}</span>`;
-        $('html, body').animate({scrollTop:1}, 'slow'); //creamos animación hacia el top de la página.
+        $('html, body').animate({scrollTop:1}, 'slow');
         alerta.fadeOut(4500);
         setTimeout(redireccionar,4000);
         }
