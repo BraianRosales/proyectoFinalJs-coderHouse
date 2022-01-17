@@ -131,16 +131,20 @@ $(()=>{
         location.href = "../carrito/carrito.html"
       }
 
-      function idsAutosComprados(){
-        return lsAutosComprados.map((auto) => auto.id)
+      function idesAutosComprados(){
+        let autosComprados = []
+        if(lsAutosComprados !== null){
+          autosComprados = lsAutosComprados.map(auto => auto.id)
+        }
+        return autosComprados;
       }
     
       function autoEstaComprado(autoId){
-        return idsAutosComprados().includes(autoId)
+        return idesAutosComprados().includes(autoId)
       }
 
     $(".precio").on("click", (e) => {
-      console.log( idsAutosComprados())
+      console.log( idesAutosComprados())
       console.log(autoEstaComprado(e.target.id))
       console.log(Number(e.target.id))
       if(autoEstaComprado(Number(e.target.id)) === false){

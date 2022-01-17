@@ -56,7 +56,6 @@ $(()=>{
   const nombreIdentificado = localStorage.getItem("nombreIdentificado")
   const contraseñaIdentificado = localStorage.getItem("contraseñaIdentificado")
   
-  
   nroCarrito = localStorage.getItem("numeroCarrito");
   $("#carrito")[0].innerHTML = `<span>${nroCarrito}</span>`;
 
@@ -232,7 +231,11 @@ $(()=>{
   }) 
 
   function idesAutosComprados(){
-    return lsAutosComprados.map(auto => auto.id)
+    let autosComprados = []
+    if(lsAutosComprados !== null){
+      autosComprados = lsAutosComprados.map(auto => auto.id)
+    }
+    return autosComprados;
   }
  
  function autoEstaComprado(auto){
@@ -294,6 +297,7 @@ $(()=>{
 
    //Modifique la lsDeUsuariosRegistrados pusheando un nuevo auto a los autos favoritos del usuario logeado y cuando la lista quedo modificada, la guarde pisandola en el local storage.
    $('.estrella').click((e)=>{
+    console.log(e.target.id)
     cambiaDeColorEstrellita(e.target.id);
     autoFavorito(e.target.id);
     let lsAutosFavoritos = usuarioLog.autosFavoritos
