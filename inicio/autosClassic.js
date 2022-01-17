@@ -51,7 +51,6 @@ $(()=>{
   let precioAuto;
   let lsUsuariosRegistrados;
   let textoElemento = document.getElementById("btn-leerMas").textContent;
-  const seIdentifico = sessionStorage.getItem("seIdentifico")
   const apellidoIdentificado = localStorage.getItem("apellidoIdentificado")
   const nombreIdentificado = localStorage.getItem("nombreIdentificado")
   const contraseñaIdentificado = localStorage.getItem("contraseñaIdentificado")
