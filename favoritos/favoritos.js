@@ -34,7 +34,7 @@ $(()=>{
       }else{
         articulos[0].innerHTML = `<p id="titulo">Autos favoritos a comprar de : ${nombreMayuscula} ${apellidoMayuscula}</p>`
         for (const autoFavorito of usuarioIdentificado().autosFavoritos) {
-            let imagenCompleta = "../inicio/" + autoFavorito.img;
+            let imagenCompleta = autoFavorito.img;
             articulos[0].innerHTML += `
             <article class="article">
               <img src=${imagenCompleta}>

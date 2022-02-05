@@ -7,7 +7,6 @@ $(()=>{
   let dni = $('#dni');
   let confirmarContraseña = $("#confirmar-contraseña");
   let btnRegistrar = $("#button");
-  let divAlert = $("#alert");
   let lsUsuariosRegistrados;
 
  if (localStorage.getItem("lsUsuariosRegistrados") == null) {
@@ -40,7 +39,7 @@ $(()=>{
   btnRegistrar.on("click", handleRegistrar);
 
   function redireccionar(){
-    location.href = "../inicio/autosClassic.html"
+    location.href = "../index.html"
   }
 
   function handleRegistrar() {

@@ -2,7 +2,6 @@ $(() => {
   const articulo = $("#articulo");
   const URL = "../json/pago.json";
   let objAuto = JSON.parse(localStorage.getItem("autoElegidoPorElUsuario"));
-  let imagenCompleta = "../inicio/" + objAuto.img;
   let precioAuto = Number(localStorage.getItem("precioTotal"));
   let lsUsuariosRegistrados = JSON.parse(localStorage.getItem("lsUsuariosRegistrados"));
   let apellidoIdentificado = localStorage.getItem("apellidoIdentificado");
@@ -21,7 +20,7 @@ $(() => {
 
   articulo[0].innerHTML = `
     <article id="article">
-    <img src= ${imagenCompleta}>
+    <img src= ${objAuto.img}>
         <ul class="ul">
             <li> marca: ${objAuto.marca}. </li>
             <li> nombre: ${objAuto.modelo}. </li>
@@ -199,7 +198,7 @@ $(() => {
       }
 
       function redireccionar() {
-        location.href = "../inicio/autosClassic.html";
+        location.href = "../index.html";
       }
 
       function lsAutosFavoritosSinElAutoRemovido(idAuto){

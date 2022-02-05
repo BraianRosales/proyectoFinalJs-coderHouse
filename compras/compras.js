@@ -22,10 +22,9 @@ $(() => {
     }else{
       articulos[0].innerHTML = `<p id="titulo">Autos comprados de: ${nombreMayuscula} ${apellidoMayuscula}</p>`
       for (const autoComprado of usuarioIdentificado().autosComprados) {
-          let imagenCompleta = "../inicio/" + autoComprado.img;
           articulos[0].innerHTML += `
           <article>
-            <img src=${imagenCompleta}>
+            <img src=${autoComprado.img}>
                 <ul class="ul">
                     <li> marca: ${autoComprado.marca}. </li>
                     <li> nombre: ${autoComprado.modelo}. </li>
