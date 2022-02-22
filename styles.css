@@ -3,11 +3,6 @@
   padding: 0px auto;
 }
 
-body {
-  width: 100%;
-  background-color: #f9fcff;
-}
-
 .clearfix {
   clear: both;
   float: none;
