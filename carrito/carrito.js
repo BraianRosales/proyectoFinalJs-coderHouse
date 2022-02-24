@@ -123,11 +123,11 @@ $(() => {
         numTarjetaString = numeroTarjeta[0].value;
         numeroTarjeta = Number(numeroTarjeta[0].value);
         let numValido = false;
-        if (numTarjetaString.length == 16 && !isNaN(numeroTarjeta)) {
+        if (numTarjetaString.length == 6 && !isNaN(numeroTarjeta)) {
           numValido = true;
           $("#error-numTarjeta").fadeOut(0);
         } else {
-          $(".error-input")[0].innerHTML = `<p id="error-numTarjeta">• Solo se aceptan 16 digitos</p>`;
+          $(".error-input")[0].innerHTML = `<p id="error-numTarjeta">• Solo se aceptan 6 digitos</p>`;
           $("#error-numTarjeta").css("color", "red");
           $("#error-numTarjeta").css("margin-left", "44px");
           $("#error-numTarjeta").css("margin-top", "-6px");

@@ -1,5 +1,5 @@
 # Autos-Classic.
-Este proyecto es un E-commerce de autos clasicos de lujos.
+Este proyecto es un E-commerce de autos clasicos de lujos. Aplicacion web.
 El proyecto corre con open with Live Server.
 
 # Funcionalidad:
