@@ -62,6 +62,14 @@ $(()=>{
     $("#carrito")[0].innerHTML = `<span>${0}</span>`;
   }
 
+  $('#btn-resetApp').click(()=>{
+    sessionStorage.setItem('seIdentifico',"no")
+    localStorage.removeItem('autoElegidoPorElUsuario')
+    localStorage.setItem('numeroCarrito',0)
+    location.reload()
+    localStorage.clear()
+  })
+
   //Agrega propiedades a los articulos en venta de la pagina.
     for (const auto of lsAutosClassic) {
       let articulos = $("#articulos");
@@ -202,7 +210,6 @@ $(()=>{
         localStorage.removeItem('autoElegidoPorElUsuario')
         localStorage.setItem('numeroCarrito',0)
         location.reload()
-        
       })
   }
   function autoElegidoParaLaCompra(idPrecio){
