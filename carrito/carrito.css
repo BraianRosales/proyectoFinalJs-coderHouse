@@ -470,6 +470,10 @@ span {
     width: 71%;
   }
 
+  #articulo > p{
+    font-size: 24px
+  }
+
   #formulario-pago {
     width: 67%;
     margin-right: 50px;
@@ -494,13 +498,17 @@ span {
     font-size: 45px;
   }
   #icon-autoClasic {
-    left: 310px;
+    left: 320px;
     top: 29px;
   }
 
   article {
     margin-left: 65px!important;
     width: 72%;
+  }
+
+  #articulo > p{
+    font-size: 24px
   }
 
   #formulario-pago {
