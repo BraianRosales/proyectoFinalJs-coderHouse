@@ -9,6 +9,7 @@ $(()=>{
   let btnRegistrar = $("#button");
   let lsUsuariosRegistrados;
 
+
  if (localStorage.getItem("lsUsuariosRegistrados") == null) {
     lsUsuariosRegistrados = [];
   } else {
@@ -35,6 +36,10 @@ $(()=>{
     let testConfirmarContraseña = confirmarContraseña[0].value;
     return ((testNombre.length /= 0) && (testApellido.length /= 0) &&(testContraseña.length /= 0) &&(testEmail.length /= 0) &&(testConfirmarContraseña.length /= 0) && testContraseña == testConfirmarContraseña && (testDni.length /= 0));
   };
+
+  $("#nombre-proyecto").click(()=>{
+    location.href = "/index.html";
+  })
 
   btnRegistrar.on("click", handleRegistrar);
 

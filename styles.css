@@ -14,9 +14,14 @@
   margin-right: 95px;
   height: 35px;
   cursor: pointer;
-  background-color: #fff9d6;
+  background-color: lemonchiffon;
   border-radius: 10px;
-  border: 1px solid #eaeaea;
+  border: 1px solid gainsboro;
+  transition: 200ms all;
+}
+
+#btn-resetApp:hover {
+ box-shadow: 1px 1px 5px 0px rgb(77, 77, 77);
 }
 
 /*-------------------CSS HEADER-----------------*/
@@ -63,6 +68,7 @@ header > h1 {
   padding-top: 20px;
   text-shadow: 1px 1px 2px black;
   color: rgb(248, 248, 248);
+  cursor: pointer;
 }
 
 #icon-autoClasic {
@@ -422,6 +428,14 @@ footer {
   }
 }
 
+@media (max-width: 810px) {
+  #btn-resetApp {
+    width: 10%;
+    margin-top: -45px;
+    margin-right: 5px;
+  }
+}
+
 @media (max-width: 751px) {
   header > h1 {
     font-size: 30px;
@@ -486,11 +500,21 @@ footer {
     font-size: 15px;
     line-height: 20px;
   }
+  #btn-resetApp {
+    width: 25%;
+    margin-top: -101px;
+    margin-right: 5px;
+  }
 }
 
 @media (max-width: 540px) {
   #btn-carrito {
     margin-right: -90px;
+  }
+  #btn-resetApp {
+    width: 25%;
+    margin-top: -101px;
+    margin-right: 5px;
   }
 }
 
@@ -561,11 +585,21 @@ footer {
   #btn-carrito {
     margin-right: -90px;
   }
+  #btn-resetApp {
+    width: 25%;
+    margin-top: -101px;
+    margin-right: 5px;
+  }
 }
 
 @media (max-width: 414px) {
   #btn-carrito {
     margin-right: -90px;
+  }
+  #btn-resetApp {
+    width: 25%;
+    margin-top: -101px;
+    margin-right: 5px;
   }
 }
 
@@ -577,5 +611,10 @@ footer {
   }
   #btn-carrito {
     margin-right: -133px;
+  }
+  #btn-resetApp {
+    width: 25%;
+    margin-top: -101px;
+    margin-right: 5px;
   }
 }

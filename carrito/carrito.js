@@ -16,6 +16,10 @@ $(() => {
     lsAutosComprados = JSON.parse(localStorage.getItem("lsAutosComprados"));
   }
 
+  $("#nombre-proyecto").click(()=>{
+    location.href = "/index.html";
+  })
+
   $('#nota').fadeOut(0)
 
   articulo[0].innerHTML = `

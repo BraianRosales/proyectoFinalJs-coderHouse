@@ -16,6 +16,10 @@ $(()=>{
         $("#carrito")[0].innerHTML = `<span>${0}</span>`;
     }
 
+    $("#nombre-proyecto").click(()=>{
+      location.href = "/index.html";
+    })
+
     function coincideConElUsuarioIdentificado(usuario,nombreIdentificado,apellidoIdentificado,contraseñaIdentificado){
       return ((usuario.nombre === nombreIdentificado) && (usuario.apellido === apellidoIdentificado)) && (usuario.contraseña === contraseñaIdentificado)
     }

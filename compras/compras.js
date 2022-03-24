@@ -5,6 +5,10 @@ $(() => {
   const nombreIdentificado = localStorage.getItem("nombreIdentificado")
   const contraseñaIdentificado = localStorage.getItem("contraseñaIdentificado")
 
+  $("#nombre-proyecto").click(()=>{
+    location.href = "/index.html";
+  })
+
   function coincideConElUsuarioIdentificado(usuario,nombreIdentificado,apellidoIdentificado,contraseñaIdentificado){
     return ((usuario.nombre === nombreIdentificado) && (usuario.apellido === apellidoIdentificado)) && (usuario.contraseña === contraseñaIdentificado)
   }
